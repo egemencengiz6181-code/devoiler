@@ -9,11 +9,11 @@ export default function Home() {
       {/* ——————————————————————————————
           HERO
       —————————————————————————————— */}
-      <section className="min-h-screen flex flex-col justify-end pt-32 pb-20 px-6 md:px-12 max-w-[1440px] mx-auto">
+      <section className="flex flex-col pt-32 md:pt-40 pb-20 px-6 md:px-12 max-w-[1440px] mx-auto">
         <div className="max-w-[1440px] mx-auto w-full">
           {/* Top label */}
           <p className="text-[10px] tracking-[0.4em] uppercase text-[#6B8F71] font-medium mb-12">
-            Dermo-Cosmetics — İstanbul
+            Dermo-Cosmetics — Ankara
           </p>
 
           {/* Main headline */}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
@@ -39,14 +40,19 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="mb-6">
-              <p className="text-[20px] font-light tracking-[0.18em] uppercase text-white">Devoiler</p>
-              <p className="text-[9px] tracking-[0.3em] uppercase text-[#6B8F71] mt-1 font-medium">Dermo-Cosmetics</p>
+              <Image
+                src="/logo/logo.webp"
+                alt="Devoiler"
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-[13px] leading-relaxed text-[#6A6A6A] mb-8 max-w-[220px]">
               Bilimsel içeriklerle desteklenen, minimal ve şeffaf dermo-kozmetik formülasyonlar.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://instagram.com/devoiler" target="_blank" rel="noreferrer"
+              <a href="https://www.instagram.com/devoiler.tr/" target="_blank" rel="noopener noreferrer"
                 className="p-2 border border-[#2A2A2A] text-[#6A6A6A] hover:text-white hover:border-[#6B8F71] transition-all duration-200">
                 <Instagram size={14} />
               </a>
@@ -101,8 +107,9 @@ export default function Footer() {
             <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A4A4A] mb-5 font-medium">Bilgi</p>
             <div className="space-y-3">
               {[
-                { label: "Hakkımızda", href: "/about" },
-                { label: "Journal", href: "/journal" },
+                { label: "Ürünler", href: "/products" },
+                { label: "Biz Kimiz?", href: "/about" },
+                { label: "Blog", href: "/blog" },
                 { label: "Sıkça Sorulan Sorular", href: "/faq" },
                 { label: "Kargo & İade", href: "/shipping" },
                 { label: "Gizlilik Politikası", href: "/privacy" },
@@ -124,7 +131,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-1.5 text-[#4A4A4A]">
             <MapPin size={11} />
-            <p className="text-[11px] tracking-wide">İstanbul, Türkiye</p>
+            <p className="text-[11px] tracking-wide">Ankara, Türkiye</p>
           </div>
           <p className="text-[11px] text-[#4A4A4A] tracking-wide">
             Cilt tipinizi tanıyın. Doğru içeriği seçin.

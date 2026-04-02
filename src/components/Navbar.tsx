@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 
+
 const solutions = [
   { label: "Leke & Ton Eşitsizliği", href: "/solutions/leke" },
   { label: "Akne & Siyah Nokta", href: "/solutions/akne" },
@@ -46,13 +47,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
 
             {/* Logo */}
-            <Link href="/" className="flex flex-col leading-none select-none">
-              <span className="text-[22px] font-light tracking-[0.18em] uppercase text-[#1A1A1A]">
-                Devoiler
-              </span>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-[#6B8F71] font-medium mt-0.5">
-                Dermo-Cosmetics
-              </span>
+            <Link href="/" className="flex items-center select-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo/logo.webp"
+                alt="Devoiler Dermo-Cosmetics"
+                className="h-[35px] md:h-[50px] w-auto object-contain"
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -118,11 +119,14 @@ export default function Navbar() {
                 )}
               </div>
 
-              <Link href="/about" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
-                Hakkımızda
+              <Link href="/products" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
+                Ürünler
               </Link>
-              <Link href="/journal" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
-                Journal
+              <Link href="/about" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
+                Biz Kimiz?
+              </Link>
+              <Link href="/blog" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
+                Blog
               </Link>
             </nav>
 
@@ -176,8 +180,9 @@ export default function Navbar() {
             </div>
             <div className="h-px bg-[#E8E8E2]" />
             <div className="space-y-3">
-              <Link href="/about" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Hakkımızda</Link>
-              <Link href="/journal" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Journal</Link>
+              <Link href="/products" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Ürünler</Link>
+              <Link href="/about" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Biz Kimiz?</Link>
+              <Link href="/blog" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Blog</Link>
             </div>
             <Link href="/solutions" onClick={() => setMobileOpen(false)}
               className="inline-flex items-center text-[10px] tracking-[0.25em] uppercase border border-[#1A1A1A] text-[#1A1A1A] px-8 py-3.5 hover:bg-[#1A1A1A] hover:text-white transition-all duration-300 font-medium mt-4">

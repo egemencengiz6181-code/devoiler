@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { products } from "@/lib/data";
 import FAQAccordion from "@/components/FAQAccordion";
+import ProductGallery from "@/components/ProductGallery";
+import ProductReviews from "@/components/ProductReviews";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -35,48 +37,54 @@ export default async function ProductPage({ params }: Props) {
       <section className="pt-32 pb-0">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           {/* Breadcrumb */}
-          <Link href="/ingredients" className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#9A9A8A] hover:text-[#1A1A1A] transition-colors duration-200 font-medium mb-16">
+          <Link href="/products" className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-[#9A9A8A] hover:text-[#1A1A1A] transition-colors duration-200 font-medium mb-16">
             <ArrowLeft size={11} />
-            Tüm Formülasyonlar
+            Tüm Ürünler
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             {/* Product Visual */}
             <div className="relative">
-              {/* Main product image area */}
-              <div className="aspect-square bg-[#F4F4F0] relative overflow-hidden flex items-center justify-center">
-                {/* Simulated product bottle */}
-                <div className="relative flex flex-col items-center">
-                  <div className="w-4 h-6 border border-[#B8B8B0] rounded-sm mb-0" />
-                  <div className="w-24 h-48 border border-[#B8B8B0] rounded-sm flex flex-col items-center justify-center gap-3 bg-white/40">
-                    <div className="w-14 h-px bg-[#6B8F71]" />
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#6B8F71] font-medium">
-                      {product.activeConcentration}
-                    </p>
-                    <p className="text-[8px] tracking-[0.2em] uppercase text-[#9A9A8A] font-medium">
-                      {product.activeIngredient}
-                    </p>
-                    <div className="w-14 h-px bg-[#E8E8E2]" />
-                    <p className="text-[7px] tracking-widest uppercase text-[#C8C8C0]">Devoiler</p>
+              {product.image && product.detailImages ? (
+                <ProductGallery
+                  mainImage={product.image}
+                  detailImages={product.detailImages}
+                  productName={product.name}
+                  category={product.category}
+                  activeConcentration={product.activeConcentration}
+                  activeIngredient={product.activeIngredient}
+                />
+              ) : (
+                <>
+                  {/* Placeholder for products without images */}
+                  <div className="aspect-square bg-[#F4F4F0] relative overflow-hidden flex items-center justify-center">
+                    <div className="relative flex flex-col items-center">
+                      <div className="w-4 h-6 border border-[#B8B8B0] rounded-sm mb-0" />
+                      <div className="w-24 h-48 border border-[#B8B8B0] rounded-sm flex flex-col items-center justify-center gap-3 bg-white/40">
+                        <div className="w-14 h-px bg-[#6B8F71]" />
+                        <p className="text-[10px] tracking-[0.3em] uppercase text-[#6B8F71] font-medium">
+                          {product.activeConcentration}
+                        </p>
+                        <p className="text-[8px] tracking-[0.2em] uppercase text-[#9A9A8A] font-medium">
+                          {product.activeIngredient}
+                        </p>
+                        <div className="w-14 h-px bg-[#E8E8E2]" />
+                        <p className="text-[7px] tracking-widest uppercase text-[#C8C8C0]">Devoiler</p>
+                      </div>
+                    </div>
+                    <div className="absolute top-8 right-8 w-16 h-20 border border-[#E0E0D8] rounded-full opacity-30" />
+                    <div className="absolute bottom-8 left-8 w-10 h-10 border border-[#E0E0D8] rounded-full opacity-20" />
+                    <div className="absolute top-6 left-6 text-[9px] tracking-[0.3em] uppercase text-[#9A9A8A] font-medium">
+                      {product.category}
+                    </div>
                   </div>
-                </div>
-
-                {/* Background lab decor */}
-                <div className="absolute top-8 right-8 w-16 h-20 border border-[#E0E0D8] rounded-full opacity-30" />
-                <div className="absolute bottom-8 left-8 w-10 h-10 border border-[#E0E0D8] rounded-full opacity-20" />
-
-                {/* Category badge */}
-                <div className="absolute top-6 left-6 text-[9px] tracking-[0.3em] uppercase text-[#9A9A8A] font-medium">
-                  {product.category}
-                </div>
-              </div>
-
-              {/* Thumbnail strip */}
-              <div className="flex gap-3 mt-3">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className={`w-20 h-20 bg-[#F4F4F0] border cursor-pointer transition-all duration-200 ${i === 0 ? "border-[#1A1A1A]" : "border-[#E8E8E2] hover:border-[#C8C8C0]"}`} />
-                ))}
-              </div>
+                  <div className="flex gap-3 mt-3">
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className={`w-20 h-20 bg-[#F4F4F0] border cursor-pointer transition-all duration-200 ${i === 0 ? "border-[#1A1A1A]" : "border-[#E8E8E2] hover:border-[#C8C8C0]"}`} />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Product Info */}
@@ -141,14 +149,37 @@ export default async function ProductPage({ params }: Props) {
                 <button className="flex-1 bg-[#1A1A1A] text-white text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#2D3B3C] transition-colors duration-300 font-medium">
                   Sepete Ekle
                 </button>
-                <button className="flex-1 border border-[#1A1A1A] text-[#1A1A1A] text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-300 font-medium">
-                  Hızlı Satın Al
-                </button>
+                <a
+                  href="https://www.instagram.com/devoiler.tr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 border border-[#6B8F71] text-[#6B8F71] text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#6B8F71] hover:text-white transition-colors duration-300 font-medium text-center"
+                >
+                  Bilgi Al
+                </a>
+              </div>
+
+              {/* Scientific formulation note */}
+              <div className="mt-8 p-6 bg-[#F4F4F0] border border-[#E8E8E2]">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#6B8F71] font-medium mb-2">
+                  Bilimsel Formül
+                </p>
+                <p className="text-[13px] leading-[1.8] text-[#4A4A4A]">
+                  Her Devoiler ürünü, ODTÜ Kimya mezunu Yüksek Kimyager Pelin Şölen&apos;in uzmanlığıyla,
+                  klinik verilerle desteklenen konsantrasyonlarda formüle edilmiştir.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ——————————————————————————————
+          KULLANICI DENEYİMLERİ — MARQUEE
+      —————————————————————————————— */}
+      {product.reviews && product.reviews.length > 0 && (
+        <ProductReviews reviews={product.reviews} />
+      )}
 
       {/* ——————————————————————————————
           İÇİNDEKİLER — ŞEFFAF FORMÜLASYON
