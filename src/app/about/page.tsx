@@ -37,7 +37,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative w-full aspect-[3/4] bg-[#E8E8E2] overflow-hidden">
               <Image
-                src="/founder/founder.png"
+                src="/founder/founder-rev.jpeg"
                 alt="Pelin Şölen — Kurucu, Devoiler"
                 fill
                 className="object-cover object-top"
@@ -232,7 +232,7 @@ export default function AboutPage() {
       <section className="bg-[#1A1A1A] py-24 px-6 md:px-12">
         <div className="max-w-[1440px] mx-auto text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-[#6B8F71] font-medium mb-6">
-            Protokolünüzü Oluşturun
+            Rutininizi Oluşturun
           </p>
           <h2 className="text-[36px] md:text-[48px] font-light text-white tracking-[-0.02em] mb-8 leading-tight">
             İlke kadar basit bir rutin.

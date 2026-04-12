@@ -43,16 +43,8 @@ export default function ShippingPage() {
                     detail: "Sipariş günü veya ertesi iş günü kargoya verilir, 2–4 iş günü içinde teslim edilir.",
                   },
                   {
-                    label: "Kargo Ücretsizlik Koşulu",
-                    detail: "500 TL ve üzeri siparişlerde kargo ücretsizdir. Altındaki siparişler için sabit 39 TL kargo bedeli uygulanır.",
-                  },
-                  {
                     label: "Kargo Günleri",
                     detail: "Hafta içi (Pazartesi–Cuma) saat 14:00&apos;e kadar verilen siparişler aynı gün kargoya verilir. Cumartesi ve resmi tatil günlerinde kargo çıkışı yapılmaz.",
-                  },
-                  {
-                    label: "Kargo Firması",
-                    detail: "Aras Kargo ve Yurtiçi Kargo ile çalışmaktayız. Tercihli firma belirtemezsiniz; bölgenize en hızlı ulaşacak firma otomatik seçilir.",
                   },
                 ].map((row) => (
                   <div
@@ -79,9 +71,9 @@ export default function ShippingPage() {
               <div className="space-y-5">
                 {[
                   "Teslim tarihinden itibaren <strong>14 gün</strong> içinde iade talebini başlatabilirsiniz.",
-                  "İade edilecek ürün; etiketi sökülmemiş, denenmemiş, kullanılmamış ve orijinal ambalajında olmalıdır.",
+                  "İade Koşulu: İade edilecek ürünün jelatini/koruma bandı açılmamış, ürün kesinlikle kullanılmamış ve orijinal ambalajı/kutusu hasar görmemiş olmalıdır.",
                   "Özel olarak kişiselleştirilmiş veya sipariş üzerine üretilen ürünler iade kapsamı dışındadır.",
-                  "İç giyim ürünleri hijyen nedeniyle iade edilemez.",
+                  "Hijyen Kuralı: Kozmetik ve kişisel bakım ürünleri hijyen kuralları gereği; ancak ambalajı/jelatini açılmamış ve denenmemiş olması durumunda iade edilebilir.",
                   "İade talebi için <strong>info@devoiler.com.tr</strong> adresine sipariş numaranızla birlikte e-posta gönderin. 1 iş günü içinde yanıt alırsınız.",
                   "Ürün hatası veya yanlış gönderim durumunda kargo ücreti tarafımızca karşılanır.",
                   "Onaylanan iadelerde para iadesi, ürün depomuza ulaştığı tarihten itibaren <strong>5 iş günü</strong> içinde başlatılır.",

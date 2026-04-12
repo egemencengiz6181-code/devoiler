@@ -5,13 +5,13 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 
-const solutions = [
-  { label: "Leke & Ton Eşitsizliği", href: "/solutions/leke" },
-  { label: "Akne & Siyah Nokta", href: "/solutions/akne" },
-  { label: "Gözenek Sıkılaştırma", href: "/solutions/gozenek" },
-  { label: "Nem & Bariyer Onarımı", href: "/solutions/nem" },
-  { label: "Çizgi & Kırışıklık", href: "/solutions/cizgi" },
-  { label: "Hassas & Kızarık Cilt", href: "/solutions/hassas" },
+const navProducts = [
+  { label: "Akne Karşıtı Serum", href: "/products/akne-karsiti-serum" },
+  { label: "Anti-Aging Tonic", href: "/products/anti-aging-tonic" },
+  { label: "Güneş Kremi", href: "/products/gunes-kremi" },
+  { label: "Leke Karşıtı Serum", href: "/products/leke-karsiti-serum" },
+  { label: "Somon DNA Serum", href: "/products/somon-dna-serum" },
+  { label: "Yüz Temizleme Jeli", href: "/products/yuz-temizleme-jeli" },
 ];
 
 const ingredients = [
@@ -59,22 +59,22 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-10">
 
-              {/* Çözümler Dropdown */}
+              {/* Ürünlerimiz Dropdown */}
               <div
                 className="relative"
-                onMouseEnter={() => setOpenMenu("solutions")}
+                onMouseEnter={() => setOpenMenu("products")}
                 onMouseLeave={() => setOpenMenu(null)}
               >
                 <button className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium py-2">
-                  Cilt Çözümleri
-                  <ChevronDown size={12} className={`transition-transform duration-200 ${openMenu === "solutions" ? "rotate-180" : ""}`} />
+                  Ürünlerimiz
+                  <ChevronDown size={12} className={`transition-transform duration-200 ${openMenu === "products" ? "rotate-180" : ""}`} />
                 </button>
-                {openMenu === "solutions" && (
+                {openMenu === "products" && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4">
                     <div className="bg-[#FAFAF8] border border-[#E8E8E2] shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-8 w-72">
-                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#9A9A8A] mb-5 font-medium">Cilt İhtiyacına Göre</p>
+                      <p className="text-[9px] tracking-[0.3em] uppercase text-[#9A9A8A] mb-5 font-medium">Formülasyonlar</p>
                       <div className="space-y-3">
-                        {solutions.map((item) => (
+                        {navProducts.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
@@ -119,9 +119,6 @@ export default function Navbar() {
                 )}
               </div>
 
-              <Link href="/products" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
-                Ürünler
-              </Link>
               <Link href="/about" className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium">
                 Biz Kimiz?
               </Link>
@@ -130,15 +127,7 @@ export default function Navbar() {
               </Link>
             </nav>
 
-            {/* Right Actions */}
-            <div className="hidden lg:flex items-center gap-6">
-              <Link
-                href="/solutions"
-                className="text-[10px] tracking-[0.25em] uppercase border border-[#1A1A1A] text-[#1A1A1A] px-6 py-2.5 hover:bg-[#1A1A1A] hover:text-white transition-all duration-300 font-medium"
-              >
-                Protokolünü Bul
-              </Link>
-            </div>
+
 
             {/* Mobile Menu Button */}
             <button
@@ -156,9 +145,9 @@ export default function Navbar() {
         <div className="fixed inset-0 z-40 bg-[#FAFAF8] pt-20 overflow-y-auto">
           <div className="px-6 py-8 space-y-8">
             <div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[#9A9A8A] mb-4 font-medium">Cilt Çözümleri</p>
+              <p className="text-[9px] tracking-[0.35em] uppercase text-[#9A9A8A] mb-4 font-medium">Ürünlerimiz</p>
               <div className="space-y-3">
-                {solutions.map((item) => (
+                {navProducts.map((item) => (
                   <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
                     className="block text-[13px] tracking-wide text-[#1A1A1A] hover:text-[#6B8F71]">
                     {item.label}
@@ -180,14 +169,10 @@ export default function Navbar() {
             </div>
             <div className="h-px bg-[#E8E8E2]" />
             <div className="space-y-3">
-              <Link href="/products" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Ürünler</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Biz Kimiz?</Link>
               <Link href="/blog" onClick={() => setMobileOpen(false)} className="block text-[13px] tracking-wide text-[#1A1A1A]">Blog</Link>
             </div>
-            <Link href="/solutions" onClick={() => setMobileOpen(false)}
-              className="inline-flex items-center text-[10px] tracking-[0.25em] uppercase border border-[#1A1A1A] text-[#1A1A1A] px-8 py-3.5 hover:bg-[#1A1A1A] hover:text-white transition-all duration-300 font-medium mt-4">
-              Protokolünü Bul
-            </Link>
+
           </div>
         </div>
       )}

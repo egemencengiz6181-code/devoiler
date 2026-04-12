@@ -273,13 +273,9 @@ export default async function ProductPage({ params }: Props) {
                   Uyumluluk Notu
                 </p>
                 <p className="text-[13px] leading-[1.8] text-[#4A4A4A]">
-                  Bu ürünü rutin protokolünüzde doğru konumlandırmak için{" "}
-                  <Link href="/solutions" className="underline underline-offset-4 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors">
-                    kişisel protokol sayfamıza
-                  </Link>{" "}
-                  göz atabilirsiniz. Aktif kombinasyonları hakkında sorularınız için<br />
-                  <a href="mailto:protocol@devoiler.com.tr" className="underline underline-offset-4 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors">
-                    protocol@devoiler.com.tr
+                  Aktif kombinasyonları ve uyumluluk hakkında sorularınız için bize ulaşabilirsiniz:<br />
+                  <a href="mailto:info@devoiler.com.tr" className="underline underline-offset-4 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors">
+                    info@devoiler.com.tr
                   </a>
                 </p>
               </div>

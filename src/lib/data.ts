@@ -153,7 +153,7 @@ export const products: Product[] = [
     skinNeeds: ["akne", "gozenek"],
     description:
       "Yüksek saflıkta %2 salisilik asit ve %4 niasinamid kombinasyonu; gözenek içi sebo birikimini çözerken inflamasyonu yatıştırır. Cildin doğal dengesini bozmadan akne döngüsünü kırmak için formüle edilmiştir.",
-    image: "/assets/urunler/akne karşıtı serum/ana görsel.png",
+    image: "/assets/urunler/akne karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/akne karşıtı serum/detay 1.png",
       "/assets/urunler/akne karşıtı serum/detay 2.png",
@@ -200,10 +200,10 @@ export const products: Product[] = [
     skinNeeds: ["cizgi", "leke", "gozenek"],
     description:
       "Düşük konsantrasyonda glikolik asit ile yumuşak eksfoliasyon sağlarken, peptid kompleksi kollajen sentezini destekler. Günlük kullanıma uygun, cildi serum adımına hazırlayan hafif formülasyon.",
-    image: "/assets/urunler/anti-aging tonic/ana görsel.png",
+    image: "/assets/urunler/anti-aging tonic/ana görseller.png",
     detailImages: [
       "/assets/urunler/anti-aging tonic/detay 1.png",
-      "/assets/urunler/anti-aging tonic/detay 2.png",
+      "/assets/urunler/anti-aging tonic/detay2.png",
       "/assets/urunler/anti-aging tonic/detay 3.png",
       "/assets/urunler/anti-aging tonic/detay 4.png",
     ],
@@ -246,7 +246,7 @@ export const products: Product[] = [
     skinNeeds: ["hassas", "leke", "cizgi"],
     description:
       "Geniş spektrumlu UVA/UVB koruması sunan, hafif ve nemlendirici yapıda güneş kremi. Beyaz iz bırakmayan formülasyonu ve antioksidan desteği ile günlük kullanım için idealdir. Tüm cilt tipleri için uygundur.",
-    image: "/assets/urunler/gunes kremi/ana görsel.png",
+    image: "/assets/urunler/gunes kremi/ana görseller.png",
     detailImages: [
       "/assets/urunler/gunes kremi/detay 1 .png",
       "/assets/urunler/gunes kremi/detay 2.png",
@@ -292,7 +292,7 @@ export const products: Product[] = [
     skinNeeds: ["leke"],
     description:
       "Alfa arbutin ve stabilize vitamin C kombinasyonu; melanin sentez yolunu çoklu noktadan hedefleyerek leke görünümünü azaltır ve cilt tonunu eşitler. Hassas ciltler dahil tüm cilt tipleri için uygundur.",
-    image: "/assets/urunler/leke karşıtı serum/ana görsel.png",
+    image: "/assets/urunler/leke karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/leke karşıtı serum/detay 1.png",
       "/assets/urunler/leke karşıtı serum/detay 2.png",
@@ -337,12 +337,12 @@ export const products: Product[] = [
     skinNeeds: ["cizgi", "nem", "hassas"],
     description:
       "Somon DNA'sından elde edilen PDRN (Polideoksiribonükleotid) ile hücresel yenilenmeyi destekler. Kollajen ve elastin sentezini uyararak cildin elastikiyetini artırır, ince çizgi görünümünü azaltır.",
-    image: "/assets/urunler/somon dna serum/ana gorsel.png",
+    image: "/assets/urunler/somon dna serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/somon dna serum/detay 1.png",
       "/assets/urunler/somon dna serum/detay 2.png",
       "/assets/urunler/somon dna serum/detay 3.png",
-      "/assets/urunler/somon dna serum/detay 4.png",
+      "/assets/urunler/somon dna serum/detay4.png",
     ],
     ingredients: [
       { name: "PDRN", inci: "Polydeoxyribonucleotide", concentration: "%3", benefit: "Hücresel yenilenme, doku onarımı", icon: "P" },
@@ -383,8 +383,8 @@ export const products: Product[] = [
     price: "₺380",
     skinNeeds: ["hassas", "akne", "nem"],
     description:
-      "Cildin doğal pH dengesine uyumlu düşük pH'lı temizleme jeli. Sülfatsız formülasyonu ile bariyeri bozmadan derinlemesine temizler, cildi aktif içerikli bakım adımlarına hazırlar.",
-    image: "/assets/urunler/yuz temizleme jeli/ana görsel.png",
+      "Cildin doğal pH dengesine uyumlu düşük pH'lı temizleme jeli. İçeriğindeki Glikolik Asit ile cildi ölü hücrelerden nazikçe arındırırken, hassas ciltlerle uyumlu formülü sayesinde bariyeri korur ve cildi aktif bakım adımlarına hazırlar.",
+    image: "/assets/urunler/yuz temizleme jeli/ana görseller.png",
     detailImages: [
       "/assets/urunler/yuz temizleme jeli/detay 1.png",
       "/assets/urunler/yuz temizleme jeli/detay 2.png",

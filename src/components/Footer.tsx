@@ -5,34 +5,6 @@ import { Instagram, Mail, MapPin } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-[#1A1A1A] text-white">
-      {/* CTA Band */}
-      <div className="border-b border-[#2A2A2A]">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-[10px] tracking-[0.35em] uppercase text-[#6B8F71] mb-4 font-medium">
-                Cilt Protokolünüz
-              </p>
-              <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-tight">
-                Cildinize özel<br />
-                <span className="italic text-[#9A9A8A]">formülasyon</span> bulun.
-              </h2>
-            </div>
-            <div className="md:text-right">
-              <p className="text-[14px] leading-relaxed text-[#9A9A8A] mb-8 max-w-sm md:ml-auto">
-                Hangi aktif içeriğin sizin için doğru olduğunu bulmak 3 dakikanızı almaz.
-              </p>
-              <Link
-                href="/solutions"
-                className="inline-flex items-center gap-3 bg-[#6B8F71] text-white text-[10px] tracking-[0.25em] uppercase px-10 py-4 hover:bg-[#45644A] transition-colors duration-300 font-medium"
-              >
-                Protokol Testini Başlat
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">

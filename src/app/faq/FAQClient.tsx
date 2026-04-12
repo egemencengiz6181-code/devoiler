@@ -57,11 +57,6 @@ const faqs = [
           "Ürün hatası veya yanlış gönderimden kaynaklanan iadelerde kargo ücreti tarafımızca karşılanır ve anlaşmalı kargo şirketimiz evinizden ürünü alır. Diğer durumlarda iade kargo ücreti müşteriye aittir.",
       },
       {
-        question: "Değişim yapabilir miyim?",
-        answer:
-          "Beden veya renk değişimi için aynı 14 günlük süre geçerlidir. Talep ettiğiniz ürün stoğu mevcutsa değişim yapılır; stok yoksa iade işlemi başlatılarak ödemeniz iade edilir.",
-      },
-      {
         question: "Para iadesi ne zaman yapılır?",
         answer:
           "İade ürünü depomuzda incelendikten sonra 5 iş günü içinde ödeme iadesi başlatılır. Kredi kartı iadelerinin hesabınıza yansıması bankanızın işlem süresine göre 3–10 iş günü arasında değişebilir.",

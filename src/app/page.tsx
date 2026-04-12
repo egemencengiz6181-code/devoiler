@@ -34,7 +34,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/solutions" className="inline-flex items-center gap-2.5 bg-[#1A1A1A] text-white text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#2D3B3C] transition-colors duration-300 font-medium">
-                    Protokolünü Bul
+                    Çözümleri Keşfet
                     <ArrowRight size={12} />
                   </Link>
                   <Link href="/ingredients" className="inline-flex items-center gap-2.5 border border-[#E8E8E2] text-[#1A1A1A] text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:border-[#1A1A1A] transition-colors duration-300 font-medium">
@@ -46,10 +46,9 @@ export default function Home() {
           </div>
 
           {/* Metrics strip */}
-          <div className="mt-20 pt-10 border-t border-[#E8E8E2] grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-20 pt-10 border-t border-[#E8E8E2] grid grid-cols-2 md:grid-cols-3 gap-8">
             {[
               { num: "100%", label: "Şeffaf Formülasyon" },
-              { num: "0", label: "Fragran, Alkol, Yapay Renk" },
               { num: "6", label: "Aktif Bileşen Ailesi" },
               { num: "≤ 15", label: "İçerik / Ürün" },
             ].map((stat) => (
@@ -114,7 +113,7 @@ export default function Home() {
                 <p className="text-[12px] leading-[1.8] text-[#9A9A8A]">{need.description}</p>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase text-[#6B8F71] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <span>Protokol Gör</span>
+                <span>Çözümü Gör</span>
                 <ArrowRight size={10} />
               </div>
             </Link>
@@ -203,27 +202,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ——————————————————————————————
-          CTA
-      —————————————————————————————— */}
-      <section className="py-28 px-6 md:px-12 max-w-[1440px] mx-auto text-center">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-[#6B8F71] font-medium mb-6">
-          Kişisel Protokol
-        </p>
-        <h2 className="text-[40px] md:text-[60px] font-light tracking-[-0.02em] text-[#1A1A1A] leading-[1.05] mb-8 max-w-2xl mx-auto">
-          Cilt rutininizi doğru temeller üzerine inşa edin.
-        </h2>
-        <p className="text-[15px] leading-[1.9] text-[#4A4A4A] mb-12 max-w-lg mx-auto">
-          Cilt ihtiyacınızı seçin, protokol önerimizi alın. Bilimsel olarak desteklenen bileşenlerle, doğru sırayla.
-        </p>
-        <Link
-          href="/solutions"
-          className="inline-flex items-center gap-3 bg-[#6B8F71] text-white text-[10px] tracking-[0.25em] uppercase px-12 py-5 hover:bg-[#45644A] transition-colors duration-300 font-medium"
-        >
-          Protokol Testini Başlat
-          <ArrowRight size={12} />
-        </Link>
-      </section>
+
     </div>
   );
 }
