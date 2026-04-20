@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import ProfileMenu from "@/components/ProfileMenu";
 
 
 const navProducts = [
@@ -27,6 +29,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { totalItems, openCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -127,15 +130,35 @@ export default function Navbar() {
               </Link>
             </nav>
 
+            {/* Cart & Profile Icons */}
+            <div className="flex items-center gap-2">
+              {/* Cart Icon */}
+              <button
+                onClick={openCart}
+                className="relative p-2 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200"
+                aria-label="Sepet"
+              >
+                <ShoppingBag size={19} strokeWidth={1.5} />
+                {totalItems > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 w-[18px] h-[18px] bg-[#6B8F71] text-white text-[9px] font-medium rounded-full flex items-center justify-center animate-cart-badge">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
 
+              {/* Profile Icon */}
+              <div className="hidden lg:block">
+                <ProfileMenu />
+              </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-[#1A1A1A]"
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="lg:hidden p-2 text-[#1A1A1A]"
+              >
+                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
       </header>

@@ -145,14 +145,14 @@ export const products: Product[] = [
   {
     slug: "akne-karsiti-serum",
     name: "Akne Karşıtı Serum",
-    tagline: "Sebum dengesini kurar. Cildi arındırır.",
+    tagline: "Siyah nokta ve sivilce karşıtı. Yağ dengesi. Parfümsüz.",
     category: "Serumlar",
-    activeIngredient: "Salisilik Asit + Niasinamid",
-    activeConcentration: "%2 BHA",
+    activeIngredient: "Niacinamide + Salisilik Asit + Azelaik Asit",
+    activeConcentration: "30 ml",
     price: "₺590",
-    skinNeeds: ["akne", "gozenek"],
+    skinNeeds: ["akne", "gozenek", "leke"],
     description:
-      "Yüksek saflıkta %2 salisilik asit ve %4 niasinamid kombinasyonu; gözenek içi sebo birikimini çözerken inflamasyonu yatıştırır. Cildin doğal dengesini bozmadan akne döngüsünü kırmak için formüle edilmiştir.",
+      "Siyah nokta ve sivilce oluşumuna karşı etkili koruma sağlar. Yağ dengesini sağlayarak aşırı sebum üretimini kontrol altına alır. Cilt tonu eşitsizliklerini gidermeye yardımcı olur. Parfüm içermez, Vegandır ve Gluten Free formüle sahiptir.",
     image: "/assets/urunler/akne karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/akne karşıtı serum/detay 1.png",
@@ -161,10 +161,11 @@ export const products: Product[] = [
       "/assets/urunler/akne karşıtı serum/detay 4.png",
     ],
     ingredients: [
-      { name: "Salisilik Asit", inci: "Salicylic Acid", concentration: "%2", benefit: "Lipofilik yapısıyla gözenek içine nüfuz eder, komedonu çözer", icon: "S" },
-      { name: "Niasinamid", inci: "Niacinamide", concentration: "%4", benefit: "Sebo regülasyonu ve anti-inflamatuar etki", icon: "N" },
-      { name: "Çinko PCA", inci: "Zinc PCA", benefit: "Yağ üretimini dengeler, antibakteriyel destek", icon: "Z" },
-      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer destekleyici", icon: "C" },
+      { name: "Niacinamide", inci: "Niacinamide", benefit: "Sebo regülasyonu, gözenek sıkılaştırma ve anti-inflamatuar etki", icon: "N" },
+      { name: "Zinc PCA (Çinko)", inci: "Zinc PCA", benefit: "Yağ üretimini dengeler, antibakteriyel destek", icon: "Z" },
+      { name: "Salisilik Asit (BHA)", inci: "Salicylic Acid", benefit: "Lipofilik yapısıyla gözenek içine nüfuz eder, komedonu çözer", icon: "S" },
+      { name: "Azelaik Asit", inci: "Azelaic Acid", benefit: "Akne izlerini ve cilt tonu eşitsizliklerini giderir", icon: "A" },
+      { name: "Centella Asiatica Özü", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer destekleyici", icon: "C" },
     ],
     howToUse: [
       "Temiz ve kuru cilde akşam rutininde uygulayın.",
@@ -191,15 +192,15 @@ export const products: Product[] = [
   },
   {
     slug: "anti-aging-tonic",
-    name: "Anti-Aging Tonic",
-    tagline: "Yeniler. Sıkılaştırır. Hazırlar.",
+    name: "Anti-Aging Tonic Youth Aqua",
+    tagline: "Nemlendirir. Ferahlatır. Gözenekleri sıkılaştırır.",
     category: "Tonikler",
-    activeIngredient: "Glikolik Asit + Peptid Kompleks",
-    activeConcentration: "%5 AHA",
+    activeIngredient: "Centella Asiatica + Niacinamide + Sodyum Hyaluronat",
+    activeConcentration: "150 ml",
     price: "₺520",
-    skinNeeds: ["cizgi", "leke", "gozenek"],
+    skinNeeds: ["nem", "gozenek", "leke"],
     description:
-      "Düşük konsantrasyonda glikolik asit ile yumuşak eksfoliasyon sağlarken, peptid kompleksi kollajen sentezini destekler. Günlük kullanıma uygun, cildi serum adımına hazırlayan hafif formülasyon.",
+      "Cildi derinlemesine nemlendirir ve ferahlatıcı etkisiyle yatıştırır. Gözenekleri sıkılaştırır ve sebum dengesini sağlar. Cilt tonunu eşitlemeye yardımcı olur. Tüm cilt tipleri için uygundur, özellikle nem ihtiyacı olan ciltler için tavsiye edilir.",
     image: "/assets/urunler/anti-aging tonic/ana görseller.png",
     detailImages: [
       "/assets/urunler/anti-aging tonic/detay 1.png",
@@ -208,10 +209,11 @@ export const products: Product[] = [
       "/assets/urunler/anti-aging tonic/detay 4.png",
     ],
     ingredients: [
-      { name: "Glikolik Asit", inci: "Glycolic Acid", concentration: "%5", benefit: "Yüzeysel eksfoliasyon, cilt yenilenmesi", icon: "G" },
-      { name: "Palmitoyl Tripeptid-1", inci: "Palmitoyl Tripeptide-1", benefit: "Kollajen sentezini uyarır", icon: "P" },
-      { name: "Allantoin", inci: "Allantoin", benefit: "Yatıştırıcı ve hücre yenilenmesini destekler", icon: "A" },
-      { name: "Panthenol", inci: "Panthenol", concentration: "%1", benefit: "Nemlendirir ve bariyeri onarır", icon: "B" },
+      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı, bariyer destekleyici ve onarıcı", icon: "C" },
+      { name: "Aloe Vera", inci: "Aloe Barbadensis Leaf Extract", benefit: "Derin nemlendirme ve ferahlatıcı etki", icon: "A" },
+      { name: "Niacinamide", inci: "Niacinamide", benefit: "Gözenek sıkılaştırma ve cilt tonu eşitleme", icon: "N" },
+      { name: "Sodyum Hyaluronat", inci: "Sodium Hyaluronate", benefit: "Uzun süreli nemlendirme ve nem bariyeri", icon: "H" },
+      { name: "Salatalık Özü", inci: "Cucumis Sativus Fruit Extract", benefit: "Canlandırıcı ve ferahlatıcı etki", icon: "S" },
     ],
     howToUse: [
       "Temizleme sonrası pamuk veya avuç içiyle uygulayın.",
@@ -220,8 +222,8 @@ export const products: Product[] = [
       "Güneş koruyucu ile sonlandırın.",
     ],
     faqs: [
-      { question: "Her gün kullanılabilir mi?", answer: "Evet, %5 glikolik asit günlük kullanım için uygun bir konsantrasyondur. Hassas ciltler günaşırı başlayabilir." },
-      { question: "Vitamin C serumu ile birlikte kullanılabilir mi?", answer: "Her ikisi de düşük pH'da çalıştığı için aralarında 5-10 dakika beklemeniz önerilir." },
+      { question: "Her gün kullanılabilir mi?", answer: "Evet, günlük kullanım için formüle edilmiştir. Sabah ve akşam rahatlıkla uygulanabilir." },
+      { question: "Yağlı ciltler kullanabilir mi?", answer: "Evet, hafif yapısı ve sebum dengeleyici etkisiyle yağlı ciltler için de idealdir." },
     ],
     reviews: [
       { text: "Temizlik sonrası cildimi germeden canlandırıyor. İnce çizgilerde dolgunluk etkisi hissettim.", author: "Arzu H." },
@@ -237,15 +239,15 @@ export const products: Product[] = [
   },
   {
     slug: "gunes-kremi",
-    name: "Güneş Kremi",
-    tagline: "Korur. Nemlenir. Beyaz iz bırakmaz.",
+    name: "Güneş Kremi SPF 50+ PA+++",
+    tagline: "UVA/UVB + Mavi ışık koruması. Mat bitiş. Sebum dengeleyici.",
     category: "Güneş Koruması",
-    activeIngredient: "Geniş Spektrum UV Filtre",
-    activeConcentration: "SPF 50+",
+    activeIngredient: "Titanyum Dioksit + Spirulina + Niacinamide",
+    activeConcentration: "50 ml",
     price: "₺480",
     skinNeeds: ["hassas", "leke", "cizgi"],
     description:
-      "Geniş spektrumlu UVA/UVB koruması sunan, hafif ve nemlendirici yapıda güneş kremi. Beyaz iz bırakmayan formülasyonu ve antioksidan desteği ile günlük kullanım için idealdir. Tüm cilt tipleri için uygundur.",
+      "Yüksek düzeyde UVA ve UVB koruması sağlar; mavi ışık koruması içerir. Antioksidan özelliğiyle cildi korurken hızlı emilen mat bir bitiş sunar. Sebum dengeleyici ve ton eşitleyici etkisiyle cildi besler. Tüm cilt tipleri için uygundur.",
     image: "/assets/urunler/gunes kremi/ana görseller.png",
     detailImages: [
       "/assets/urunler/gunes kremi/detay 1 .png",
@@ -253,10 +255,12 @@ export const products: Product[] = [
       "/assets/urunler/gunes kremi/detay 3.png",
     ],
     ingredients: [
-      { name: "Uvinul A Plus", inci: "Diethylamino Hydroxybenzoyl Hexyl Benzoate", benefit: "UVA koruması, fotostabil filtre", icon: "U" },
-      { name: "Tinosorb S", inci: "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine", benefit: "Geniş spektrum UVA/UVB koruması", icon: "T" },
-      { name: "Vitamin E", inci: "Tocopherol", benefit: "Antioksidan koruma, UV hasarını azaltır", icon: "E" },
-      { name: "Hyaluronik Asit", inci: "Sodium Hyaluronate", benefit: "Uzun süreli nemlendirme", icon: "H" },
+      { name: "Titanyum Dioksit", inci: "Titanium Dioxide", benefit: "Fiziksel UVA/UVB filtre, geniş spektrum koruma", icon: "T" },
+      { name: "Spirulina", inci: "Spirulina Platensis Extract", benefit: "Antioksidan, mavi ışık koruması ve canlandırıcı", icon: "S" },
+      { name: "Panthenol", inci: "Panthenol", benefit: "Nem bariyerini güçlendirir, yatıştırıcı", icon: "P" },
+      { name: "Niacinamide", inci: "Niacinamide", benefit: "Sebum dengeleyici, ton eşitleyici", icon: "N" },
+      { name: "Kolajen", inci: "Hydrolyzed Collagen", benefit: "Cilt elastikiyetini destekler, dolgunlaştırıcı", icon: "K" },
+      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer onarıcı", icon: "C" },
     ],
     howToUse: [
       "Güneşe çıkmadan 15-20 dakika önce bol miktarda uygulayın.",
@@ -265,7 +269,7 @@ export const products: Product[] = [
       "Makyaj üzerine de uygulanabilir.",
     ],
     faqs: [
-      { question: "Yağlı ciltlere uygun mu?", answer: "Evet. Hafif jel-krem yapısı gözenekleri tıkamaz ve mat bir bitiriş sunar." },
+      { question: "Yağlı ciltlere uygun mu?", answer: "Evet. Mat bitiş ve sebum dengeleyici formülasyonuyla yağlı ciltler için idealdir." },
       { question: "Makyaj altına kullanılabilir mi?", answer: "Beyaz iz bırakmayan formülasyonu sayesinde makyaj bazı olarak idealdir." },
     ],
     reviews: [
@@ -284,24 +288,23 @@ export const products: Product[] = [
   {
     slug: "leke-karsiti-serum",
     name: "Leke Karşıtı Serum",
-    tagline: "Aydınlatır. Ton eşitler. Işık verir.",
+    tagline: "Leke giderici. Ton eşitleyici. Aydınlatıcı.",
     category: "Serumlar",
-    activeIngredient: "Alfa Arbutin + Vitamin C",
-    activeConcentration: "%2 Arbutin",
+    activeIngredient: "Arbutin + Kolajen + Moringa Özü",
+    activeConcentration: "30 ml",
     price: "₺680",
-    skinNeeds: ["leke"],
+    skinNeeds: ["leke", "cizgi"],
     description:
-      "Alfa arbutin ve stabilize vitamin C kombinasyonu; melanin sentez yolunu çoklu noktadan hedefleyerek leke görünümünü azaltır ve cilt tonunu eşitler. Hassas ciltler dahil tüm cilt tipleri için uygundur.",
+      "Koyu leke görünümünü azaltmaya ve cilt tonunu eşitlemeye yardımcı olur. Cilde daha parlak ve canlı bir görünüm kazandırarak donukluğu giderir. Yaşlanma karşıtı ve sıkılaştırıcı bakım sunar. Leke sorunu olan, donuk ve yaşlanma karşıtı bakım isteyen tüm cilt tipleri için uygundur.",
     image: "/assets/urunler/leke karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/leke karşıtı serum/detay 1.png",
       "/assets/urunler/leke karşıtı serum/detay 2.png",
     ],
     ingredients: [
-      { name: "Alfa Arbutin", inci: "Alpha-Arbutin", concentration: "%2", benefit: "Tirozinaz inhibitörü, melanin sentezini yavaşlatır", icon: "A" },
-      { name: "Vitamin C (SAP)", inci: "Sodium Ascorbyl Phosphate", concentration: "%3", benefit: "Stabil C vitamini, aydınlatıcı antioksidan", icon: "C" },
-      { name: "Traneksamik Asit", inci: "Tranexamic Acid", benefit: "Leke oluşum mekanizmasını baskılar", icon: "T" },
-      { name: "Meyan Kökü Ekstresi", inci: "Glycyrrhiza Glabra Root Extract", benefit: "Doğal aydınlatıcı, anti-inflamatuar", icon: "M" },
+      { name: "Arbutin", inci: "Alpha-Arbutin", benefit: "Tirozinaz inhibitörü, melanin sentezini yavaşlatarak leke görünümünü azaltır", icon: "A" },
+      { name: "Kolajen", inci: "Hydrolyzed Collagen", benefit: "Yaşlanma karşıtı, cilt elastikiyetini destekler ve sıkılaştırır", icon: "K" },
+      { name: "Moringa Özü", inci: "Moringa Oleifera Seed Extract", benefit: "Aydınlatıcı, antioksidan ve canlandırıcı etki", icon: "M" },
     ],
     howToUse: [
       "Sabah ve akşam temiz cilde uygulayın.",
@@ -311,7 +314,7 @@ export const products: Product[] = [
     ],
     faqs: [
       { question: "Ne kadar sürede sonuç verir?", answer: "Tutarlı kullanımda 4-8 hafta içinde leke tonunda belirgin açılma gözlemlenir. 12 haftada optimum sonuç beklenir." },
-      { question: "Hamilelikte kullanılabilir mi?", answer: "Alfa arbutin ve stabilize vitamin C hamilelikte güvenli kabul edilir ancak doktorunuza danışmanızı öneririz." },
+      { question: "Hamilelikte kullanılabilir mi?", answer: "Arbutin hamilelikte güvenli kabul edilir ancak doktorunuza danışmanızı öneririz." },
     ],
     reviews: [
       { text: "Güneş lekelerimdeki açılma gözle görülür seviyede. Cilt tonum sonunda eşitlendi.", author: "Funda D." },
@@ -329,14 +332,14 @@ export const products: Product[] = [
   {
     slug: "somon-dna-serum",
     name: "Somon DNA Serum",
-    tagline: "Onarır. Yeniler. Gençleştirir.",
+    tagline: "Yaşlanma karşıtı. Sıkılaştırıcı. Yoğun besleyici.",
     category: "Serumlar",
-    activeIngredient: "PDRN (Polideoksiribonükleotid)",
-    activeConcentration: "%3 PDRN",
+    activeIngredient: "Somon DNA + Argireline + Kolajen",
+    activeConcentration: "30 ml",
     price: "₺920",
     skinNeeds: ["cizgi", "nem", "hassas"],
     description:
-      "Somon DNA'sından elde edilen PDRN (Polideoksiribonükleotid) ile hücresel yenilenmeyi destekler. Kollajen ve elastin sentezini uyararak cildin elastikiyetini artırır, ince çizgi görünümünü azaltır.",
+      "Yaşlanma karşıtı bakım sunarak ince çizgilerin ve kırışıklıkların görünümünü azaltır. Cildi sıkılaştırır ve daha genç bir görünüm kazandırır. Yoğun besleyici ve canlandırıcı etkisiyle nem ihtiyacını karşılar. Tüm cilt tipleri, özellikle olgun ve nemsiz ciltler için uygundur.",
     image: "/assets/urunler/somon dna serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/somon dna serum/detay 1.png",
@@ -345,10 +348,11 @@ export const products: Product[] = [
       "/assets/urunler/somon dna serum/detay4.png",
     ],
     ingredients: [
-      { name: "PDRN", inci: "Polydeoxyribonucleotide", concentration: "%3", benefit: "Hücresel yenilenme, doku onarımı", icon: "P" },
-      { name: "Hyaluronik Asit (Çoklu MW)", inci: "Sodium Hyaluronate", benefit: "Çok katmanlı nemlendirme", icon: "H" },
-      { name: "Adenozin", inci: "Adenosine", benefit: "Anti-aging, kırışıklık giderici", icon: "A" },
-      { name: "EGF Peptidi", inci: "sh-Oligopeptide-1", benefit: "Epidermal büyüme faktörü, yenilenme hızlandırıcı", icon: "E" },
+      { name: "Somon DNA", inci: "Polydeoxyribonucleotide (PDRN)", benefit: "Hücresel yenilenme ve doku onarımı", icon: "D" },
+      { name: "Argireline", inci: "Acetyl Hexapeptide-8", benefit: "Mimik çizgilerini azaltır, botoks benzeri etki", icon: "A" },
+      { name: "Kolajen", inci: "Hydrolyzed Collagen", benefit: "Cilt elastikiyetini artırır, sıkılaştırır", icon: "K" },
+      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer destekleyici", icon: "C" },
+      { name: "Helichrysum Italicum", inci: "Helichrysum Italicum Flower Extract", benefit: "Canlandırıcı, antioksidan ve onarıcı", icon: "H" },
     ],
     howToUse: [
       "Akşam rutininde temiz cilde uygulayın.",
@@ -357,7 +361,7 @@ export const products: Product[] = [
       "Düzenli kullanımda 6-8 hafta sonunda belirgin fark gözlemlenir.",
     ],
     faqs: [
-      { question: "PDRN nedir?", answer: "Somon DNA'sından elde edilen polideoksiribonükleotid, hücresel onarım mekanizmalarını aktive eden biyolojik bir moleküldür." },
+      { question: "Somon DNA nedir?", answer: "Somon balığının DNA'sından elde edilen polideoksiribonükleotid (PDRN), hücresel onarım mekanizmalarını aktive eden biyolojik bir moleküldür." },
       { question: "Vegan mıdır?", answer: "Hayır. PDRN somon balığı kaynaklıdır. Bu konuda şeffaflığı ön planda tutuyoruz." },
     ],
     reviews: [
@@ -376,14 +380,14 @@ export const products: Product[] = [
   {
     slug: "yuz-temizleme-jeli",
     name: "Yüz Temizleme Jeli",
-    tagline: "Temizler. Dengeyi korur. Hazırlar.",
+    tagline: "Glikolik asitli. Arındırıcı. Hücre yenileyici.",
     category: "Temizleyiciler",
-    activeIngredient: "Düşük pH Jel Formülasyon",
-    activeConcentration: "pH 5.5",
+    activeIngredient: "Glikolik Asit + Tea Tree + Centella Asiatica",
+    activeConcentration: "200 ml",
     price: "₺380",
-    skinNeeds: ["hassas", "akne", "nem"],
+    skinNeeds: ["akne", "leke", "gozenek"],
     description:
-      "Cildin doğal pH dengesine uyumlu düşük pH'lı temizleme jeli. İçeriğindeki Glikolik Asit ile cildi ölü hücrelerden nazikçe arındırırken, hassas ciltlerle uyumlu formülü sayesinde bariyeri korur ve cildi aktif bakım adımlarına hazırlar.",
+      "Cildi arındırırken hücre yenilenmesini destekler ve derinlemesine temizlik sağlar. Siyah nokta ve akne karşıtı bakım sunar, sebumu dengeler. Donuk cilt görünümünü azaltır ve daha eşit bir cilt tonu sağlar. Tüm cilt tipleri, özellikle akneye eğilimli ve koyu leke sorunu olan ciltler için uygundur.",
     image: "/assets/urunler/yuz temizleme jeli/ana görseller.png",
     detailImages: [
       "/assets/urunler/yuz temizleme jeli/detay 1.png",
@@ -391,10 +395,10 @@ export const products: Product[] = [
       "/assets/urunler/yuz temizleme jeli/detay 3.png",
     ],
     ingredients: [
-      { name: "Coco-Glucoside", inci: "Coco-Glucoside", benefit: "Doğal kökenli yumuşak yüzey aktif madde", icon: "C" },
-      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer destekleyici", icon: "A" },
-      { name: "Panthenol", inci: "Panthenol", concentration: "%1", benefit: "Nem kaybını önler, bariyeri onarır", icon: "P" },
-      { name: "Çay Ağacı Yağı", inci: "Melaleuca Alternifolia Leaf Oil", benefit: "Doğal antibakteriyel temizlik", icon: "T" },
+      { name: "Glikolik Asit", inci: "Glycolic Acid", benefit: "Hücre yenilenmesini destekler, ölü deriyi arındırır", icon: "G" },
+      { name: "Tea Tree (Çay Ağacı) Özü", inci: "Melaleuca Alternifolia Leaf Oil", benefit: "Doğal antibakteriyel, akne karşıtı temizlik", icon: "T" },
+      { name: "Centella Asiatica Özü", inci: "Centella Asiatica Extract", benefit: "Yatıştırıcı ve bariyer destekleyici", icon: "C" },
+      { name: "Helichrysum Italicum Çiçek Özü", inci: "Helichrysum Italicum Flower Extract", benefit: "Canlandırıcı, antioksidan ve onarıcı", icon: "H" },
     ],
     howToUse: [
       "Islak yüze küçük bir miktar uygulayın.",

@@ -5,6 +5,8 @@ import { products } from "@/lib/data";
 import FAQAccordion from "@/components/FAQAccordion";
 import ProductGallery from "@/components/ProductGallery";
 import ProductReviews from "@/components/ProductReviews";
+import AddToCartButton from "@/components/AddToCartButton";
+import WishlistButton from "@/components/WishlistButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -146,9 +148,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-[#1A1A1A] text-white text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#2D3B3C] transition-colors duration-300 font-medium">
-                  Sepete Ekle
-                </button>
+                <AddToCartButton product={product} />
                 <a
                   href="https://www.instagram.com/devoiler.tr/"
                   target="_blank"
@@ -157,6 +157,7 @@ export default async function ProductPage({ params }: Props) {
                 >
                   Bilgi Al
                 </a>
+                <WishlistButton slug={product.slug} size={20} className="border border-[#E8E8E2] p-4 hover:border-[#1A1A1A] transition-colors duration-200" />
               </div>
 
               {/* Scientific formulation note */}

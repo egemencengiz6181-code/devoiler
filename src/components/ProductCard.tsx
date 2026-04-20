@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/lib/data";
 import { ArrowRight, Star } from "lucide-react";
+import WishlistButton from "@/components/WishlistButton";
 
 const reviews = [
   "\u201CODTÜ Kimya güvencesi: pH dengesi mükemmel, cildim sonunda aradığı dengeyi buldu.\u201D — Ece B.",
@@ -37,6 +38,11 @@ export default function ProductCard({ product }: { product: Product }) {
         {/* Category badge */}
         <div className="absolute top-5 right-5 text-[9px] tracking-[0.2em] uppercase text-white/90 font-medium bg-[#1A1A1A]/30 backdrop-blur-sm px-2.5 py-1">
           {product.category}
+        </div>
+
+        {/* Wishlist */}
+        <div className="absolute top-5 left-5">
+          <WishlistButton slug={product.slug} size={18} className="p-1.5 bg-white/80 backdrop-blur-sm hover:bg-white transition-colors duration-200" />
         </div>
       </div>
 
