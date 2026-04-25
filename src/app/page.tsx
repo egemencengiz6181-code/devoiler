@@ -145,6 +145,25 @@ export default function Home() {
           {products.map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
+          {/* Tester Kit — Coming Soon */}
+          <div className="block">
+            <div className="relative overflow-hidden bg-[#F4F4F0] aspect-[3/4] mb-4">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                <p className="text-[9px] tracking-[0.35em] uppercase text-[#9A9A8A] font-medium">Coming Soon</p>
+                <div className="w-8 h-px bg-[#C8C8C0]" />
+                <p className="text-[11px] tracking-[0.15em] uppercase text-[#C8C8C0] font-light">Tester Kit</p>
+              </div>
+              <div className="absolute top-5 right-5 text-[9px] tracking-[0.2em] uppercase text-white/90 font-medium bg-[#1A1A1A]/30 backdrop-blur-sm px-2.5 py-1">
+                Yakında
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-[18px] font-light tracking-tight text-[#1A1A1A]">Tester Kit</h3>
+              </div>
+              <p className="text-[12px] text-[#9A9A8A] tracking-wide leading-relaxed">Devoiler deneyimini başlatmak için özel set. Yakında.</p>
+            </div>
+          </div>
         </div>
       </section>
 

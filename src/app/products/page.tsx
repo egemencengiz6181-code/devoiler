@@ -13,6 +13,7 @@ export default function ProductsPage() {
       : products.filter((p) => {
           const map: Record<string, string> = {
             serumlar: "Serumlar",
+            kremler: "Kremler",
             tonikler: "Tonikler",
             "gunes-korumasi": "Güneş Koruması",
             temizleyiciler: "Temizleyiciler",

@@ -21,6 +21,7 @@ export type Product = {
   image?: string;
   detailImages?: string[];
   reviews?: Review[];
+  soldOut?: boolean;
 };
 
 export type ProductCategory = {
@@ -31,6 +32,7 @@ export type ProductCategory = {
 export const productCategories: ProductCategory[] = [
   { slug: "tumu", label: "Tümü" },
   { slug: "serumlar", label: "Serumlar" },
+  { slug: "kremler", label: "Kremler" },
   { slug: "tonikler", label: "Tonikler" },
   { slug: "gunes-korumasi", label: "Güneş Koruması" },
   { slug: "temizleyiciler", label: "Temizleyiciler" },
@@ -149,8 +151,7 @@ export const products: Product[] = [
     category: "Serumlar",
     activeIngredient: "Niacinamide + Salisilik Asit + Azelaik Asit",
     activeConcentration: "30 ml",
-    price: "₺590",
-    skinNeeds: ["akne", "gozenek", "leke"],
+    price: "₺590",    soldOut: true,    skinNeeds: ["akne", "gozenek", "leke"],
     description:
       "Siyah nokta ve sivilce oluşumuna karşı etkili koruma sağlar. Yağ dengesini sağlayarak aşırı sebum üretimini kontrol altına alır. Cilt tonu eşitsizliklerini gidermeye yardımcı olur. Parfüm içermez, Vegandır ve Gluten Free formüle sahiptir.",
     image: "/assets/urunler/akne karşıtı serum/ana görseller.png",
@@ -198,6 +199,7 @@ export const products: Product[] = [
     activeIngredient: "Centella Asiatica + Niacinamide + Sodyum Hyaluronat",
     activeConcentration: "150 ml",
     price: "₺520",
+    soldOut: true,
     skinNeeds: ["nem", "gozenek", "leke"],
     description:
       "Cildi derinlemesine nemlendirir ve ferahlatıcı etkisiyle yatıştırır. Gözenekleri sıkılaştırır ve sebum dengesini sağlar. Cilt tonunu eşitlemeye yardımcı olur. Tüm cilt tipleri için uygundur, özellikle nem ihtiyacı olan ciltler için tavsiye edilir.",
@@ -245,6 +247,7 @@ export const products: Product[] = [
     activeIngredient: "Titanyum Dioksit + Spirulina + Niacinamide",
     activeConcentration: "50 ml",
     price: "₺480",
+    soldOut: true,
     skinNeeds: ["hassas", "leke", "cizgi"],
     description:
       "Yüksek düzeyde UVA ve UVB koruması sağlar; mavi ışık koruması içerir. Antioksidan özelliğiyle cildi korurken hızlı emilen mat bir bitiş sunar. Sebum dengeleyici ve ton eşitleyici etkisiyle cildi besler. Tüm cilt tipleri için uygundur.",
@@ -293,6 +296,7 @@ export const products: Product[] = [
     activeIngredient: "Arbutin + Kolajen + Moringa Özü",
     activeConcentration: "30 ml",
     price: "₺680",
+    soldOut: true,
     skinNeeds: ["leke", "cizgi"],
     description:
       "Koyu leke görünümünü azaltmaya ve cilt tonunu eşitlemeye yardımcı olur. Cilde daha parlak ve canlı bir görünüm kazandırarak donukluğu giderir. Yaşlanma karşıtı ve sıkılaştırıcı bakım sunar. Leke sorunu olan, donuk ve yaşlanma karşıtı bakım isteyen tüm cilt tipleri için uygundur.",
@@ -337,6 +341,7 @@ export const products: Product[] = [
     activeIngredient: "Somon DNA + Argireline + Kolajen",
     activeConcentration: "30 ml",
     price: "₺920",
+    soldOut: true,
     skinNeeds: ["cizgi", "nem", "hassas"],
     description:
       "Yaşlanma karşıtı bakım sunarak ince çizgilerin ve kırışıklıkların görünümünü azaltır. Cildi sıkılaştırır ve daha genç bir görünüm kazandırır. Yoğun besleyici ve canlandırıcı etkisiyle nem ihtiyacını karşılar. Tüm cilt tipleri, özellikle olgun ve nemsiz ciltler için uygundur.",
@@ -385,6 +390,7 @@ export const products: Product[] = [
     activeIngredient: "Glikolik Asit + Tea Tree + Centella Asiatica",
     activeConcentration: "200 ml",
     price: "₺380",
+    soldOut: true,
     skinNeeds: ["akne", "leke", "gozenek"],
     description:
       "Cildi arındırırken hücre yenilenmesini destekler ve derinlemesine temizlik sağlar. Siyah nokta ve akne karşıtı bakım sunar, sebumu dengeler. Donuk cilt görünümünü azaltır ve daha eşit bir cilt tonu sağlar. Tüm cilt tipleri, özellikle akneye eğilimli ve koyu leke sorunu olan ciltler için uygundur.",
@@ -421,6 +427,60 @@ export const products: Product[] = [
       { text: "Panthenol desteği temizleme jelinde nadir bulunan bir özellik. Cilt bariyerim bu ürünle güçlendi.", author: "Gülay E." },
       { text: "Devoiler'in tüm ürünlerini denedim, rutinimin vazgeçilmez ilk adımı bu jel.", author: "Reyhan T." },
       { text: "Hassas ve rozasea eğilimli cildimde hiç kızarıklık yapmadı. Yumuşak ama etkili bir temizlik.", author: "Dr. Ayşen V." },
+    ],
+  },
+  {
+    slug: "yaslanma-krisiklik-karsiti-bakim-kremi",
+    name: "Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi (%0,06 RETİNAL)",
+    tagline: "Hücre yenileyici. Sıkılaştırıcı. Anti-aging gece bakımı.",
+    category: "Kremler",
+    activeIngredient: "Retinal + Niasinamid + Argireline",
+    activeConcentration: "50 ml",
+    price: "₺420",
+    skinNeeds: ["cizgi", "nem", "hassas"],
+    description:
+      "Retinal, Niasinamid ve Argireline peptidi içeren bu ileri formül; ince çizgilerin ve kırışıklıkların görünümünü hedefler, cilt elastikiyetini artırır. Hyaluronik asit ve Pentavitin ile derin nemlendirme sağlarken Centella Asiatica cildi sakinleştirir ve doğal iyileşme sürecini destekler. Kararlı C vitamini türevi 3-O-etil askorbik asit, cilt tonunu aydınlatır ve canlandırır. Gece boyunca cilde yoğun bakım sunarak sabah daha genç ve sağlıklı bir görünüm elde etmenize yardımcı olur.",
+    image: "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/1.png",
+    detailImages: [
+      "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/2.png",
+      "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/3.png",
+      "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/4.png",
+      "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/5.png",
+      "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/6.png",
+    ],
+    ingredients: [
+      { name: "Retinal (%0,06)", inci: "Retinaldehyde", benefit: "Hücre yenilenmesini teşvik eder, ince çizgileri ve kırışıklıkları azaltır, cilt elastikiyetini artırır", icon: "R" },
+      { name: "Niasinamid", inci: "Niacinamide", benefit: "Cilt tonunu eşitler, cildi sıkılaştırır ve epidermal bariyer fonksiyonunu güçlendirir", icon: "N" },
+      { name: "Hyaluronik Asit", inci: "Sodium Hyaluronate", benefit: "Derinlemesine nemlendirme sağlar, su tutma kapasitesini artırarak cilt dolgunluğunu destekler", icon: "H" },
+      { name: "Argireline", inci: "Acetyl Hexapeptide-8", benefit: "Mimik çizgilerinin görünümünü azaltır, kas aktivitesini hafifletir", icon: "A" },
+      { name: "Pentavitin", inci: "Saccharide Isomerate", benefit: "Derinlemesine nemlendirme sağlar, cildin su dengesini korur ve esnekliği destekler", icon: "P" },
+      { name: "Centella Asiatica", inci: "Centella Asiatica Extract", benefit: "Cildi sakinleştirir, doğal iyileşme sürecini destekler ve yaşlanma belirtilerini azaltmaya katkı sağlar", icon: "C" },
+      { name: "3-O-Etil Askorbik Asit", inci: "3-O-Ethyl Ascorbic Acid", benefit: "Kararlı C vitamini türevi; cilt tonunu aydınlatır, ince çizgileri azaltır ve cildi canlandırır", icon: "V" },
+    ],
+    howToUse: [
+      "Akşam rutininin son adımı olarak temiz cilde uygulayın.",
+      "Yüz ve boyun bölgesine ince bir tabaka halinde yayın.",
+      "Hafif masaj hareketleriyle absorbe edin.",
+      "Retinal içerdiğinden gündüz kullanımından kaçının.",
+      "Gündüz mutlaka SPF 50+ güneş koruyucu kullanın.",
+    ],
+    faqs: [
+      { question: "Retinal nedir ve retinoldan farkı nedir?", answer: "Retinal (retinaldehyde), A vitamini türevleri arasında retinoik asite en yakın formüldür. Retinole kıyasla daha hızlı ve etkili çalışır; aynı zamanda iritasyon riski görece daha düşüktür." },
+      { question: "Hassas ciltler kullanabilir mi?", answer: "Retinal içerdiğinden hassas ciltler ilk 2 haftada haftada 2-3 uygulama ile başlamalı, ardından her gece kullanıma geçebilir. Hafif bir adaptasyon süreci yaşanabilir." },
+      { question: "Hamilelikte kullanılabilir mi?", answer: "Retinal ve A vitamini türevleri hamilelikte önerilmez. Lütfen doktorunuza danışın." },
+      { question: "Diğer aktif serumlarla birlikte kullanılabilir mi?", answer: "AHA/BHA veya yüksek konsantrasyonlu C vitamini serumuyla aynı gece kullanılmaması önerilir. Niasinamid içeren tonik veya serumlarla uyumludur." },
+    ],
+    reviews: [
+      { text: "Retinal içeren ürünlerden korkuyordum ama bu krem adaptasyon sürecini çok kolay atlattırdı. 3 haftada çizgilerim belirgin azaldı.", author: "Ayşe K." },
+      { text: "Formülasyondaki aktif denge mükemmel. Retinal ve niasinamid birlikteliği hem etkili hem de irite etmiyor.", author: "Dr. Selin A." },
+      { text: "Sabah aynaya baktığımda cildim dolgun ve ışıltılı görünüyor. Anti-aging kremlerden ilk defa bu kadar sonuç aldım.", author: "Pınar D." },
+      { text: "Argireline etkisini gerçekten hissediyorum. Alın çizgilerim belirgin şekilde yumuşadı.", author: "Derya T." },
+      { text: "Hyaluronik asit ve Pentavitin kombinasyonu muhteşem. Kış aylarında bile cildim asla kuru hissetmiyor.", author: "Merve B." },
+      { text: "Kimyager titizliğiyle hazırlanmış bir formül. %0,06 retinal konsantrasyonu başlangıç için ideal.", author: "Prof. Dr. Zeynep Ö." },
+      { text: "Centella asiatica sayesinde retinalin adaptasyon sürecinde cildim hiç kızarmadı.", author: "Gülşen M." },
+      { text: "Stabilize C vitamini formu gerçekten fark yaratıyor. Cilt tonum hem aydınlandı hem de çizgilerim azaldı.", author: "Ceren Y." },
+      { text: "40 yaş üstü ciltler için birebir. 6 hafta sonunda dermatolojistim de farkı fark etti.", author: "Nuran E." },
+      { text: "Bu kadar zengin bir formülü bu fiyata bulmak neredeyse imkansız. Devoiler'in en iyi ürünü bence.", author: "Fatma S." },
     ],
   },
 ];

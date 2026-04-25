@@ -40,6 +40,15 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.category}
         </div>
 
+        {/* Sold out overlay */}
+        {product.soldOut && (
+          <div className="absolute inset-0 bg-[#FAFAF8]/70 flex items-center justify-center">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#9A9A8A] font-medium border border-[#C8C8C0] px-4 py-2">
+              Tükendi
+            </span>
+          </div>
+        )}
+
         {/* Wishlist */}
         <div className="absolute top-5 left-5">
           <WishlistButton slug={product.slug} size={18} className="p-1.5 bg-white/80 backdrop-blur-sm hover:bg-white transition-colors duration-200" />

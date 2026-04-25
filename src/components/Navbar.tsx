@@ -14,6 +14,7 @@ const navProducts = [
   { label: "Leke Karşıtı Serum", href: "/products/leke-karsiti-serum" },
   { label: "Somon DNA Serum", href: "/products/somon-dna-serum" },
   { label: "Yüz Temizleme Jeli", href: "/products/yuz-temizleme-jeli" },
+  { label: "Yaşlanma & Kırışıklık Karşıtı Krem", href: "/products/yaslanma-krisiklik-karsiti-bakim-kremi" },
 ];
 
 const ingredients = [

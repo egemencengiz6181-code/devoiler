@@ -11,6 +11,17 @@ export default function AddToCartButton({ product }: { product: Product }) {
   const { showToast } = useToast();
   const [added, setAdded] = useState(false);
 
+  if (product.soldOut) {
+    return (
+      <button
+        disabled
+        className="flex-1 text-[10px] tracking-[0.25em] uppercase px-8 py-4 font-medium flex items-center justify-center gap-3 bg-[#E8E8E2] text-[#9A9A8A] cursor-not-allowed"
+      >
+        Tükendi
+      </button>
+    );
+  }
+
   const handleAdd = () => {
     if (added) return;
     addItem(product);
