@@ -32,6 +32,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // merchant_oid alfanümerik olmalı — tire ve özel karakter içeremez
+    const clean_oid = (merchant_oid as string).replace(/[^a-zA-Z0-9]/g, "");
+
     const merchant_ok_url = `${process.env.NEXT_PUBLIC_SITE_URL || "https://devoiler.com.tr"}/checkout/success`;
     const merchant_fail_url = `${process.env.NEXT_PUBLIC_SITE_URL || "https://devoiler.com.tr"}/checkout/fail`;
 
@@ -39,7 +42,7 @@ export async function POST(request: NextRequest) {
     const user_basket_b64 = Buffer.from(JSON.stringify(user_basket)).toString("base64");
 
     // Create hash string per PayTR docs
-    const hashStr = `${MERCHANT_ID}${user_ip}${merchant_oid}${email}${payment_amount}${user_basket_b64}${no_installment}${max_installment}${currency}${test_mode}`;
+    const hashStr = `${MERCHANT_ID}${user_ip}${clean_oid}${email}${payment_amount}${user_basket_b64}${no_installment}${max_installment}${currency}${test_mode}`;
     const paytr_token = crypto
       .createHmac("sha256", MERCHANT_KEY)
       .update(hashStr + MERCHANT_SALT)
@@ -48,7 +51,7 @@ export async function POST(request: NextRequest) {
     const params = new URLSearchParams({
       merchant_id: MERCHANT_ID,
       user_ip,
-      merchant_oid,
+      merchant_oid: clean_oid,
       email,
       payment_amount: String(payment_amount),
       paytr_token,
@@ -100,10 +103,10 @@ export async function POST(request: NextRequest) {
           user_basket as [string, string, string][]
         ).map(([name, price, quantity]) => ({ name, price, quantity }));
 
-        // 3. Bekleyen siparişi kaydet
+        // 3. Bekleyen siparişi kaydet — clean_oid ile (alfanümerik, tire yok)
         await supabase.from("orders").insert({
           user_id: profile?.id ?? null,
-          paytr_oid: merchant_oid,
+          paytr_oid: clean_oid,
           total_amount: Number(payment_amount),
           status: "pending",
           basket_details,

@@ -63,7 +63,7 @@ export default function CheckoutPage() {
     setPaymentLoading(true);
     setPaymentError("");
     try {
-      const merchant_oid = `DV-${Date.now().toString(36).toUpperCase()}`;
+      const merchant_oid = `DV${Date.now().toString(36).toUpperCase()}`;
       const user_basket = items.map((item) => [
         item.product.name,
         String(parsePrice(item.product.price) * 100),
