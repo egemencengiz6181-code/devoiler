@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       no_installment = 0,
       max_installment = 0,
       currency = "TL",
-      test_mode = process.env.PAYTR_TEST_MODE || "1",
+      test_mode = process.env.PAYTR_TEST_MODE || "0",
     } = body;
 
     if (!MERCHANT_ID || !MERCHANT_KEY || !MERCHANT_SALT) {
