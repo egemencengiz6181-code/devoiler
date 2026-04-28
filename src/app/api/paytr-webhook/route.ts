@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { createAdminClient } from "@/lib/supabase-server";
 
 const MERCHANT_SALT = process.env.PAYTR_MERCHANT_SALT || "";
 const MERCHANT_KEY = process.env.PAYTR_MERCHANT_KEY || "";
@@ -28,12 +29,32 @@ export async function POST(request: NextRequest) {
     }
 
     // Hash doğrulandı — ödeme durumunu işle
+    const supabase = createAdminClient();
+
     if (status === "success") {
       console.log("PayTR ödeme başarılı:", { merchant_oid, total_amount });
-      // TODO: Veritabanında ilgili siparişin durumunu "ödendi" olarak güncelle
+
+      // Supabase'deki siparişi "paid" olarak güncelle
+      const { error } = await supabase
+        .from("orders")
+        .update({ status: "paid" })
+        .eq("paytr_oid", merchant_oid);
+
+      if (error) {
+        console.error("Supabase order update error (paid):", error);
+      }
     } else {
       console.log("PayTR ödeme başarısız:", { merchant_oid, total_amount });
-      // TODO: Veritabanında ilgili siparişin durumunu "başarısız" olarak güncelle
+
+      // Supabase'deki siparişi "failed" olarak güncelle
+      const { error } = await supabase
+        .from("orders")
+        .update({ status: "failed" })
+        .eq("paytr_oid", merchant_oid);
+
+      if (error) {
+        console.error("Supabase order update error (failed):", error);
+      }
     }
 
     // PayTR bildirimlerin tekrarlanmaması için mutlaka "OK" yanıtı dön

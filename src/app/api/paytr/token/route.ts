@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
+import { createAdminClient } from "@/lib/supabase-server";
 
 // PayTR sandbox/production credentials from environment variables
 const MERCHANT_ID = process.env.PAYTR_MERCHANT_ID || "";
@@ -75,6 +76,50 @@ export async function POST(request: NextRequest) {
     const result = await response.json();
 
     if (result.status === "success") {
+      // ── Supabase: profili upsert et ve bekleyen siparişi oluştur ──────────
+      try {
+        const supabase = createAdminClient();
+
+        // 1. Profili e-posta üzerinden upsert et
+        const { data: profile } = await supabase
+          .from("profiles")
+          .upsert(
+            {
+              email,
+              full_name: user_name,
+              phone: user_phone,
+              address: user_address,
+            },
+            { onConflict: "email", ignoreDuplicates: false }
+          )
+          .select("id")
+          .single();
+
+        // 2. Sepet ürünlerini nesne dizisine dönüştür
+        const basket_details = (
+          user_basket as [string, string, string][]
+        ).map(([name, price, quantity]) => ({ name, price, quantity }));
+
+        // 3. Bekleyen siparişi kaydet
+        await supabase.from("orders").insert({
+          user_id: profile?.id ?? null,
+          paytr_oid: merchant_oid,
+          total_amount: Number(payment_amount),
+          status: "pending",
+          basket_details,
+          address_snapshot: {
+            name: user_name,
+            address: user_address,
+            phone: user_phone,
+            email,
+          },
+        });
+      } catch (dbError) {
+        // Veritabanı hatası ödeme akışını durdurmamalı — sadece logla
+        console.error("Supabase order insert error:", dbError);
+      }
+      // ─────────────────────────────────────────────────────────────────────
+
       return NextResponse.json({ token: result.token });
     } else {
       return NextResponse.json(

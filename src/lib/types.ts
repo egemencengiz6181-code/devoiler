@@ -45,6 +45,58 @@ export type Coupon = {
   minAmount?: number;
 };
 
+// ─── Supabase / Admin types ────────────────────────────────────────────────
+
+export type SupabaseOrderStatus =
+  | "pending"
+  | "paid"
+  | "failed"
+  | "preparing"
+  | "shipped"
+  | "delivered"
+  | "cancelled";
+
+export type BasketItem = {
+  name: string;
+  price: string; // kuruş cinsinden string
+  quantity: string;
+};
+
+export type AddressSnapshot = {
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+};
+
+export type SupabaseOrder = {
+  id: string;
+  user_id: string | null;
+  paytr_oid: string | null;
+  total_amount: number;
+  status: SupabaseOrderStatus;
+  basket_details: BasketItem[] | null;
+  address_snapshot: AddressSnapshot | null;
+  created_at: string;
+  updated_at: string;
+  profiles: {
+    email: string;
+    full_name: string | null;
+    phone: string | null;
+  } | null;
+};
+
+export type SupabaseProfile = {
+  id: string;
+  email: string;
+  full_name: string | null;
+  phone: string | null;
+  address: string | null;
+  created_at: string;
+};
+
+// ─── Mock coupons for demo ─────────────────────────────────────────────────
+
 // Mock coupons for demo
 export const mockCoupons: Coupon[] = [
   { code: "HOSGELDIN", discountType: "percentage", value: 10, isActive: true },
