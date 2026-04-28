@@ -18,7 +18,8 @@ type AuthContextType = {
   user: User | null;
   isAuthOpen: boolean;
   authMode: "login" | "register";
-  openAuth: (mode?: "login" | "register") => void;
+  redirectAfterAuth: string | null;
+  openAuth: (mode?: "login" | "register", redirectTo?: string) => void;
   closeAuth: () => void;
   setAuthMode: (mode: "login" | "register") => void;
   login: (email: string, password: string) => Promise<boolean>;
@@ -49,6 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
+  const [redirectAfterAuth, setRedirectAfterAuth] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -71,8 +73,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user, mounted]);
 
-  const openAuth = useCallback((mode: "login" | "register" = "login") => {
+  const openAuth = useCallback((mode: "login" | "register" = "login", redirectTo?: string) => {
     setAuthMode(mode);
+    setRedirectAfterAuth(redirectTo ?? null);
     setIsAuthOpen(true);
   }, []);
 
@@ -170,6 +173,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         isAuthOpen,
         authMode,
+        redirectAfterAuth,
         openAuth,
         closeAuth,
         setAuthMode,

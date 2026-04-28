@@ -7,6 +7,7 @@ import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight, Tag } from "lucide-rea
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CartDrawer() {
   const {
@@ -15,6 +16,7 @@ export default function CartDrawer() {
   } = useCart();
   const { user, openAuth } = useAuth();
   const [couponInput, setCouponInput] = useState("");
+  const router = useRouter();
 
   // Prevent body scroll when drawer is open
   useEffect(() => {
@@ -31,11 +33,11 @@ export default function CartDrawer() {
   const handleCheckout = () => {
     if (!user) {
       closeCart();
-      openAuth("register");
+      openAuth("register", "/checkout");
       return;
     }
     closeCart();
-    window.location.href = "/checkout";
+    router.push("/checkout");
   };
 
   return (

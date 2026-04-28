@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { X, Eye, EyeOff, ArrowRight, User as UserIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function AuthModal() {
-  const { isAuthOpen, authMode, closeAuth, setAuthMode, login, register } = useAuth();
+  const { isAuthOpen, authMode, closeAuth, setAuthMode, login, register, redirectAfterAuth } = useAuth();
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -52,8 +54,9 @@ export default function AuthModal() {
     setLoading(true);
 
     try {
+      let success = false;
       if (authMode === "login") {
-        const success = await login(email, password);
+        success = await login(email, password);
         if (!success) {
           setError("E-posta veya şifre hatalı.");
         }
@@ -63,7 +66,7 @@ export default function AuthModal() {
           setLoading(false);
           return;
         }
-        const success = await register({
+        success = await register({
           email,
           password,
           firstName,
@@ -74,6 +77,11 @@ export default function AuthModal() {
         if (!success) {
           setError("Bu e-posta adresi zaten kayıtlı.");
         }
+      }
+
+      // Başarılı auth sonrası bekleyen yönlendirme varsa uygula
+      if (success && redirectAfterAuth) {
+        router.push(redirectAfterAuth);
       }
     } catch {
       setError("Bir hata oluştu. Lütfen tekrar deneyin.");
