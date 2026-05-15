@@ -153,7 +153,7 @@ export const products: Product[] = [
     activeConcentration: "30 ml",
     price: "₺590",    soldOut: true,    skinNeeds: ["akne", "gozenek", "leke"],
     description:
-      "Siyah nokta ve sivilce oluşumuna karşı etkili koruma sağlar. Yağ dengesini sağlayarak aşırı sebum üretimini kontrol altına alır. Cilt tonu eşitsizliklerini gidermeye yardımcı olur. Parfüm içermez, Vegandır ve Gluten Free formüle sahiptir.",
+      "İçeriğindeki Azelaik Asit ve Salisilik Asit (BHA) sinerjisiyle gözenekleri derinlemesine arındırarak cilt pürüzlerine karşı savaşır; sebum dengesini sağlamaya ve leke görünümünü azaltmaya yardımcı, duru bir cilt görünümü sunan konsantre bakım serumu.",
     image: "/assets/urunler/akne karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/akne karşıtı serum/detay 1.png",
@@ -202,7 +202,7 @@ export const products: Product[] = [
     soldOut: true,
     skinNeeds: ["nem", "gozenek", "leke"],
     description:
-      "Cildi derinlemesine nemlendirir ve ferahlatıcı etkisiyle yatıştırır. Gözenekleri sıkılaştırır ve sebum dengesini sağlar. Cilt tonunu eşitlemeye yardımcı olur. Tüm cilt tipleri için uygundur, özellikle nem ihtiyacı olan ciltler için tavsiye edilir.",
+      "Centella Asiatica özü ile formüle edilmiş, alkol içermeyen yatıştırıcı tonik; cildi temizlik sonrası anında nemlendirerek sakinleştirir, dış etkenlere karşı cilt bariyerini desteklerken kızarıklık görünümünü azaltmaya ve cilde doğal dengesini geri kazandırmaya yardımcı olur.",
     image: "/assets/urunler/anti-aging tonic/ana görseller.png",
     detailImages: [
       "/assets/urunler/anti-aging tonic/detay 1.png",
@@ -250,7 +250,7 @@ export const products: Product[] = [
     soldOut: true,
     skinNeeds: ["hassas", "leke", "cizgi"],
     description:
-      "Yüksek düzeyde UVA ve UVB koruması sağlar; mavi ışık koruması içerir. Antioksidan özelliğiyle cildi korurken hızlı emilen mat bir bitiş sunar. Sebum dengeleyici ve ton eşitleyici etkisiyle cildi besler. Tüm cilt tipleri için uygundur.",
+      "SPF 50+ ve modern filtre teknolojisiyle cildi UVA/UVB ışınlarının zararlı etkilerine karşı geniş spektrumlu koruma altına alır; hafif yapısı sayesinde beyazlık bırakmadan hızlıca emilirken, güneşe bağlı leke oluşumu ve erken yaşlanma belirtilerine karşı etkili bir savunma kalkanı sunar.",
     image: "/assets/urunler/gunes kremi/ana görseller.png",
     detailImages: [
       "/assets/urunler/gunes kremi/detay 1 .png",
@@ -299,7 +299,7 @@ export const products: Product[] = [
     soldOut: true,
     skinNeeds: ["leke", "cizgi"],
     description:
-      "Koyu leke görünümünü azaltmaya ve cilt tonunu eşitlemeye yardımcı olur. Cilde daha parlak ve canlı bir görünüm kazandırarak donukluğu giderir. Yaşlanma karşıtı ve sıkılaştırıcı bakım sunar. Leke sorunu olan, donuk ve yaşlanma karşıtı bakım isteyen tüm cilt tipleri için uygundur.",
+      "Yüksek saflıktaki Alpha Arbutin içeriğiyle ciltteki koyu leke görünümünü hedef alır; melanin üretimini dengeleyerek cilt tonu eşitsizliklerini gidermeye ve cildin daha berrak, ışıltılı bir görünüme kavuşmasına yardımcı olan yoğun aydınlatıcı serum.",
     image: "/assets/urunler/leke karşıtı serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/leke karşıtı serum/detay 1.png",
@@ -344,7 +344,7 @@ export const products: Product[] = [
     soldOut: true,
     skinNeeds: ["cizgi", "nem", "hassas"],
     description:
-      "Yaşlanma karşıtı bakım sunarak ince çizgilerin ve kırışıklıkların görünümünü azaltır. Cildi sıkılaştırır ve daha genç bir görünüm kazandırır. Yoğun besleyici ve canlandırıcı etkisiyle nem ihtiyacını karşılar. Tüm cilt tipleri, özellikle olgun ve nemsiz ciltler için uygundur.",
+      "Somon DNA ve Argireline peptit ile cildin doğal onarım mekanizmalarını aktive eder; kolajen sentezini destekleyerek elastikiyet kaybını hedef alır, cilde daha dolgun, sıkı ve gençleşmiş bir görünüm kazandırmak için tasarlanmış hücresel bakım serumu.",
     image: "/assets/urunler/somon dna serum/ana görseller.png",
     detailImages: [
       "/assets/urunler/somon dna serum/detay 1.png",
@@ -393,7 +393,7 @@ export const products: Product[] = [
     soldOut: true,
     skinNeeds: ["akne", "leke", "gozenek"],
     description:
-      "Cildi arındırırken hücre yenilenmesini destekler ve derinlemesine temizlik sağlar. Siyah nokta ve akne karşıtı bakım sunar, sebumu dengeler. Donuk cilt görünümünü azaltır ve daha eşit bir cilt tonu sağlar. Tüm cilt tipleri, özellikle akneye eğilimli ve koyu leke sorunu olan ciltler için uygundur.",
+      "Formülündeki Glikolik Asit (AHA) ile cildi ölü hücrelerden nazikçe arındırarak taze bir görünüm kazandırır; gözenekleri derinlemesine temizlerken cilt dokusunun daha pürüzsüz ve aydınlık bir yapıya kavuşmasını destekleyen yenileyici temizleme jeli.",
     image: "/assets/urunler/yuz temizleme jeli/ana görseller.png",
     detailImages: [
       "/assets/urunler/yuz temizleme jeli/detay 1.png",
@@ -439,7 +439,7 @@ export const products: Product[] = [
     price: "₺420",
     skinNeeds: ["cizgi", "nem", "hassas"],
     description:
-      "Retinal, Niasinamid ve Argireline peptidi içeren bu ileri formül; ince çizgilerin ve kırışıklıkların görünümünü hedefler, cilt elastikiyetini artırır. Hyaluronik asit ve Pentavitin ile derin nemlendirme sağlarken Centella Asiatica cildi sakinleştirir ve doğal iyileşme sürecini destekler. Kararlı C vitamini türevi 3-O-etil askorbik asit, cilt tonunu aydınlatır ve canlandırır. Gece boyunca cilde yoğun bakım sunarak sabah daha genç ve sağlıklı bir görünüm elde etmenize yardımcı olur.",
+      "Formülündeki Retinal (Retinaldehyde) ile cildin yenilenme sürecini destekler; yaşlanma belirtileri ve ince çizgi görünümüne karşı yüksek performanslı, hedefe yönelik bir bakım sunar.",
     image: "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/1.png",
     detailImages: [
       "/assets/urunler/Yaşlanma Ve Kırışıklık Karşıtı Bakım Kremi/2.png",

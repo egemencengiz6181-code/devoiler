@@ -69,10 +69,10 @@ export default function Navbar() {
                 onMouseEnter={() => setOpenMenu("products")}
                 onMouseLeave={() => setOpenMenu(null)}
               >
-                <button className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium py-2">
+                <Link href="/products" className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] hover:text-[#6B8F71] transition-colors duration-200 font-medium py-2">
                   Ürünlerimiz
                   <ChevronDown size={12} className={`transition-transform duration-200 ${openMenu === "products" ? "rotate-180" : ""}`} />
-                </button>
+                </Link>
                 {openMenu === "products" && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4">
                     <div className="bg-[#FAFAF8] border border-[#E8E8E2] shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-8 w-72">
@@ -169,7 +169,10 @@ export default function Navbar() {
         <div className="fixed inset-0 z-40 bg-[#FAFAF8] pt-20 overflow-y-auto">
           <div className="px-6 py-8 space-y-8">
             <div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[#9A9A8A] mb-4 font-medium">Ürünlerimiz</p>
+              <Link href="/products" onClick={() => setMobileOpen(false)}
+                className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] font-medium mb-4 block hover:text-[#6B8F71] transition-colors">
+                Ürünlerimiz
+              </Link>
               <div className="space-y-3">
                 {navProducts.map((item) => (
                   <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
