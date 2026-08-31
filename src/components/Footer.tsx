@@ -1,8 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Mail, MapPin } from "lucide-react";
+import { getSiteContent } from "@/lib/cms";
 
-export default function Footer() {
+export default async function Footer() {
+  const content = await getSiteContent();
+  const c = content.footer;
+  const g = content.general;
+
+  const columns = [
+    { title: c.solutionsTitle, links: c.solutionsLinks },
+    { title: c.ingredientsTitle, links: c.ingredientsLinks },
+    { title: c.infoTitle, links: c.infoLinks },
+  ];
+
   return (
     <footer className="bg-[#1A1A1A] text-white">
       {/* Main Footer */}
@@ -13,100 +24,63 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="mb-6">
               <Image
-                src="/logo/logo.webp"
+                src={g.logo}
                 alt="Devoiler"
                 width={120}
                 height={40}
                 className="h-8 w-auto object-contain brightness-0 invert"
+                unoptimized
               />
             </div>
             <p className="text-[13px] leading-relaxed text-[#6A6A6A] mb-8 max-w-[220px]">
-              Bilimsel içeriklerle desteklenen, minimal ve şeffaf dermo-kozmetik formülasyonlar.
+              {c.brandText}
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/devoiler.tr/" target="_blank" rel="noopener noreferrer"
-                className="p-2 border border-[#2A2A2A] text-[#6A6A6A] hover:text-white hover:border-[#6B8F71] transition-all duration-200">
-                <Instagram size={14} />
-              </a>
-              <a href="mailto:info@devoiler.com.tr"
-                className="p-2 border border-[#2A2A2A] text-[#6A6A6A] hover:text-white hover:border-[#6B8F71] transition-all duration-200">
-                <Mail size={14} />
-              </a>
+              {g.instagram && (
+                <a href={g.instagram} target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="p-2 border border-[#2A2A2A] text-[#6A6A6A] hover:text-white hover:border-[#6B8F71] transition-all duration-200">
+                  <Instagram size={14} />
+                </a>
+              )}
+              {g.email && (
+                <a href={`mailto:${g.email}`}
+                  aria-label="E-posta"
+                  className="p-2 border border-[#2A2A2A] text-[#6A6A6A] hover:text-white hover:border-[#6B8F71] transition-all duration-200">
+                  <Mail size={14} />
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Çözümler */}
-          <div>
-            <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A4A4A] mb-5 font-medium">Cilt Çözümleri</p>
-            <div className="space-y-3">
-              {[
-                { label: "Leke & Ton Eşitsizliği", href: "/solutions/leke" },
-                { label: "Akne & Siyah Nokta", href: "/solutions/akne" },
-                { label: "Gözenek Sıkılaştırma", href: "/solutions/gozenek" },
-                { label: "Nem & Bariyer Onarımı", href: "/solutions/nem" },
-                { label: "Çizgi & Kırışıklık", href: "/solutions/cizgi" },
-              ].map((item) => (
-                <Link key={item.href} href={item.href}
-                  className="block text-[12px] text-[#6A6A6A] hover:text-[#6B8F71] transition-colors duration-200 tracking-wide">
-                  {item.label}
-                </Link>
-              ))}
+          {columns.map((col) => (
+            <div key={col.title}>
+              <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A4A4A] mb-5 font-medium">
+                {col.title}
+              </p>
+              <div className="space-y-3">
+                {col.links.map((item) => (
+                  <Link key={item.href + item.label} href={item.href}
+                    className="block text-[12px] text-[#6A6A6A] hover:text-[#6B8F71] transition-colors duration-200 tracking-wide">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Aktif İçerikler */}
-          <div>
-            <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A4A4A] mb-5 font-medium">Aktif İçerikler</p>
-            <div className="space-y-3">
-              {[
-                { label: "Retinol", href: "/ingredients/retinol" },
-                { label: "Vitamin C", href: "/ingredients/vitamin-c" },
-                { label: "Hyaluronik Asit", href: "/ingredients/hyaluronik-asit" },
-                { label: "Niasinamid", href: "/ingredients/niasinamid" },
-                { label: "AHA & BHA", href: "/ingredients/asitler" },
-                { label: "Peptidler", href: "/ingredients/peptidler" },
-              ].map((item) => (
-                <Link key={item.href} href={item.href}
-                  className="block text-[12px] text-[#6A6A6A] hover:text-[#6B8F71] transition-colors duration-200 tracking-wide">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Info */}
-          <div>
-            <p className="text-[9px] tracking-[0.3em] uppercase text-[#4A4A4A] mb-5 font-medium">Bilgi</p>
-            <div className="space-y-3">
-              {[
-                { label: "Ürünler", href: "/products" },
-                { label: "Biz Kimiz?", href: "/about" },
-                { label: "Blog", href: "/blog" },
-                { label: "Sıkça Sorulan Sorular", href: "/faq" },
-                { label: "Kargo & İade", href: "/shipping" },
-                { label: "Gizlilik Politikası", href: "/privacy" },
-                { label: "KVKK", href: "/kvkk" },
-              ].map((item) => (
-                <Link key={item.href} href={item.href}
-                  className="block text-[12px] text-[#6A6A6A] hover:text-[#6B8F71] transition-colors duration-200 tracking-wide">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-[#222222] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[11px] text-[#4A4A4A] tracking-wide">
-            © 2026 Devoiler Dermo-Cosmetics. Tüm hakları saklıdır.
+            {c.copyright}
           </p>
           <div className="flex items-center gap-1.5 text-[#4A4A4A]">
             <MapPin size={11} />
-            <p className="text-[11px] tracking-wide">Ankara, Türkiye</p>
+            <p className="text-[11px] tracking-wide">{c.location}</p>
           </div>
           <p className="text-[11px] text-[#4A4A4A] tracking-wide">
-            Cilt tipinizi tanıyın. Doğru içeriği seçin.
+            {c.tagline}
           </p>
         </div>
       </div>

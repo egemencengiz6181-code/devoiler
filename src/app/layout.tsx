@@ -10,6 +10,7 @@ import { OrderProvider } from "@/context/OrderContext";
 import CartDrawer from "@/components/CartDrawer";
 import AuthModal from "@/components/AuthModal";
 import ToastContainer from "@/components/ToastContainer";
+import { getSiteContent } from "@/lib/cms";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,12 +18,15 @@ const inter = Inter({
   weight: ["200", "300", "400", "500", "600"],
 });
 
-export const metadata: Metadata = {
-  title: "Devoiler — Bilimsel Formülasyon, Sade Etkinlik",
-  description:
-    "Kanıta dayalı dermo-kozmetik formülasyonlar. Cildinizin ihtiyacına göre kişiselleştirilmiş aktif içerik protokolleri.",
-  keywords: "dermo-kozmetik, aktif içerik, retinol, vitamin c, hyaluronik asit, leke, akne, gözenek",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getSiteContent();
+  return {
+    title: content.general.siteTitle,
+    description: content.general.siteDescription,
+    keywords:
+      "dermo-kozmetik, aktif içerik, retinol, vitamin c, hyaluronik asit, leke, akne, gözenek",
+  };
+}
 
 export default function RootLayout({
   children,

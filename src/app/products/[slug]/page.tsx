@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { products } from "@/lib/data";
+import { getProduct, getProducts, getSiteContent } from "@/lib/cms";
 import FAQAccordion from "@/components/FAQAccordion";
 import ProductGallery from "@/components/ProductGallery";
 import ProductReviews from "@/components/ProductReviews";
@@ -12,13 +12,16 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
+  const products = await getProducts();
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const product = await getProduct(slug);
   if (!product) return {};
   return {
     title: `${product.name} — Devoiler`,
@@ -28,8 +31,9 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const [product, content] = await Promise.all([getProduct(slug), getSiteContent()]);
   if (!product) notFound();
+  const c = content.productDetail;
 
   return (
     <div className="bg-[#FAFAF8]">
@@ -47,10 +51,10 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             {/* Product Visual */}
             <div className="relative">
-              {product.image && product.detailImages ? (
+              {product.image ? (
                 <ProductGallery
                   mainImage={product.image}
-                  detailImages={product.detailImages}
+                  detailImages={product.detailImages ?? []}
                   productName={product.name}
                   category={product.category}
                   activeConcentration={product.activeConcentration}
@@ -94,7 +98,7 @@ export default async function ProductPage({ params }: Props) {
               {/* Active Ingredient — BIG DISPLAY */}
               <div className="mb-10 pb-8 border-b border-[#E8E8E2]">
                 <p className="text-[10px] tracking-[0.4em] uppercase text-[#9A9A8A] font-medium mb-3">
-                  Birincil Aktif Bileşen
+                  {c.activeLabel}
                 </p>
                 <div className="flex items-baseline gap-4">
                   <span className="text-[64px] md:text-[80px] font-light tracking-tight text-[#1A1A1A] leading-none">
@@ -124,7 +128,7 @@ export default async function ProductPage({ params }: Props) {
                     href={`/solutions/${need}`}
                     className="inline-flex items-center text-[10px] tracking-[0.2em] uppercase border border-[#E8E8E2] text-[#2D3B3C] px-3 py-1.5 hover:border-[#6B8F71] hover:text-[#6B8F71] transition-colors duration-200 font-medium"
                   >
-                    {need}
+                    {content.skinNeeds.find((n) => n.slug === need)?.label ?? need}
                   </Link>
                 ))}
               </div>
@@ -139,10 +143,10 @@ export default async function ProductPage({ params }: Props) {
                 <span className="text-[28px] font-light text-[#1A1A1A]">{product.price}</span>
                 <div className="flex flex-col gap-1">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[#9A9A8A] font-medium">
-                    Ücretsiz Kargo
+                    {c.freeShippingNote}
                   </p>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[#9A9A8A] font-medium">
-                    30 Gün İade Garantisi
+                    {c.returnNote}
                   </p>
                 </div>
               </div>
@@ -150,12 +154,12 @@ export default async function ProductPage({ params }: Props) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <AddToCartButton product={product} />
                 <a
-                  href="https://www.instagram.com/devoiler.tr/"
+                  href={c.infoButtonHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 border border-[#6B8F71] text-[#6B8F71] text-[10px] tracking-[0.25em] uppercase px-8 py-4 hover:bg-[#6B8F71] hover:text-white transition-colors duration-300 font-medium text-center"
                 >
-                  Bilgi Al
+                  {c.infoButtonLabel}
                 </a>
                 <WishlistButton slug={product.slug} size={20} className="border border-[#E8E8E2] p-4 hover:border-[#1A1A1A] transition-colors duration-200" />
               </div>
@@ -163,11 +167,10 @@ export default async function ProductPage({ params }: Props) {
               {/* Scientific formulation note */}
               <div className="mt-8 p-6 bg-[#F4F4F0] border border-[#E8E8E2]">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-[#6B8F71] font-medium mb-2">
-                  Bilimsel Formül
+                  {c.scienceNoteLabel}
                 </p>
                 <p className="text-[13px] leading-[1.8] text-[#4A4A4A]">
-                  Her Devoiler ürünü, ODTÜ Kimya mezunu Yüksek Kimyager Pelin Şölen&apos;in uzmanlığıyla,
-                  klinik verilerle desteklenen konsantrasyonlarda formüle edilmiştir.
+                  {c.scienceNoteText}
                 </p>
               </div>
             </div>
@@ -190,13 +193,13 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-4">
               <p className="text-[10px] tracking-[0.4em] uppercase text-[#9A9A8A] font-medium mb-4">
-                Şeffaf Formülasyon
+                {c.ingredientsLabel}
               </p>
               <h2 className="text-[32px] font-light tracking-[-0.01em] text-[#1A1A1A] mb-6 leading-tight">
-                İçindekiler
+                {c.ingredientsTitle}
               </h2>
               <p className="text-[14px] leading-[1.9] text-[#4A4A4A]">
-                Her bileşen bir işlev taşır. Formülasyonumuzdaki hiçbir madde dolgu, renk veya koku amaçlı değildir.
+                {c.ingredientsText}
               </p>
             </div>
 
@@ -246,13 +249,13 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-4">
               <p className="text-[10px] tracking-[0.4em] uppercase text-[#9A9A8A] font-medium mb-4">
-                Uygulama Protokolü
+                {c.howToLabel}
               </p>
               <h2 className="text-[32px] font-light tracking-[-0.01em] text-[#1A1A1A] mb-6 leading-tight">
-                Nasıl Kullanılır
+                {c.howToTitle}
               </h2>
               <p className="text-[14px] leading-[1.9] text-[#4A4A4A]">
-                Doğru sıra ve yöntem, formülasyonun etkinliğini doğrudan etkiler.
+                {c.howToText}
               </p>
             </div>
 
@@ -271,12 +274,12 @@ export default async function ProductPage({ params }: Props) {
               {/* Compatibility note */}
               <div className="mt-12 p-8 bg-white border border-[#E8E8E2]">
                 <p className="text-[10px] tracking-[0.35em] uppercase text-[#6B8F71] font-medium mb-3">
-                  Uyumluluk Notu
+                  {c.compatLabel}
                 </p>
                 <p className="text-[13px] leading-[1.8] text-[#4A4A4A]">
-                  Aktif kombinasyonları ve uyumluluk hakkında sorularınız için bize ulaşabilirsiniz:<br />
-                  <a href="mailto:info@devoiler.com.tr" className="underline underline-offset-4 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors">
-                    info@devoiler.com.tr
+                  {c.compatText}<br />
+                  <a href={`mailto:${content.general.email}`} className="underline underline-offset-4 text-[#1A1A1A] hover:text-[#6B8F71] transition-colors">
+                    {content.general.email}
                   </a>
                 </p>
               </div>

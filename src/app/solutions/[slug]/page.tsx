@@ -1,20 +1,24 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { skinNeeds, products } from "@/lib/data";
+import { getProducts, getSiteContent } from "@/lib/cms";
 import ProductCard from "@/components/ProductCard";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
-  return skinNeeds.map((n) => ({ slug: n.slug }));
+  const content = await getSiteContent();
+  return content.skinNeeds.map((n) => ({ slug: n.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const need = skinNeeds.find((n) => n.slug === slug);
+  const content = await getSiteContent();
+  const need = content.skinNeeds.find((n) => n.slug === slug);
   if (!need) return {};
   return {
     title: `${need.label} — Devoiler Cilt Çözümleri`,
@@ -24,10 +28,16 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function SolutionDetailPage({ params }: Props) {
   const { slug } = await params;
+  const [products, content] = await Promise.all([getProducts(), getSiteContent()]);
+  const skinNeeds = content.skinNeeds;
   const need = skinNeeds.find((n) => n.slug === slug);
   if (!need) notFound();
 
   const relatedProducts = products.filter((p) => p.skinNeeds.includes(slug));
+  const mechanism = (need.mechanism ?? "")
+    .split(/\n\s*\n/)
+    .map((t) => t.trim())
+    .filter(Boolean);
 
   return (
     <div className="bg-[#FAFAF8]">
@@ -70,7 +80,12 @@ export default async function SolutionDetailPage({ params }: Props) {
           </div>
           <div className="lg:col-span-7">
             <div className="space-y-4 text-[15px] leading-[1.9] text-[#4A4A4A]">
-              {getMechanism(slug).map((para, i) => <p key={i}>{para}</p>)}
+              {(mechanism.length > 0
+                ? mechanism
+                : ["Bu çözüm için bilimsel protokol içeriği hazırlanıyor."]
+              ).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
             </div>
           </div>
         </div>
@@ -116,40 +131,4 @@ export default async function SolutionDetailPage({ params }: Props) {
       </section>
     </div>
   );
-}
-
-function getMechanism(slug: string): string[] {
-  const map: Record<string, string[]> = {
-    leke: [
-      "Hiperpigmentasyon; UV hasarı, hormonal değişimler veya inflamasyon sonrası melanin üretiminin dengesizleşmesiyle ortaya çıkar.",
-      "Tirozinaz enzimi, tirozin aminoasidini melanin pigmentine dönüştürür. Bu yolağı hedefleyen aktifler (Vitamin C, niasinamid, alfa-arbutin) melanin sentezini ve melanozom transferini inhibe eder.",
-      "Etkinliği klinik araştırmalarla desteklenen bu aktifler, tutarlı kullanımda 8–12 hafta içinde ton eşitlemede ölçülebilir değişim sağlar.",
-    ],
-    akne: [
-      "Aknede dört temel mekanizma iç içe geçer: aşırı sebum üretimi, komedon oluşumu, Cutibacterium acnes kolonizasyonu ve inflamatuar yanıt.",
-      "Bilimsel olarak değerlendirilmiş aktifler her aşamayı hedefler: salisilik asit (BHA) lipofilik yapısıyla gözenek içine girerek komedon sıkışmasını önler; niasinamid sebum üretimini düzenler; benzoil peroksit ise bakteri yükünü azaltır.",
-      "İrritan formülasyonlardan kaçınmak inflamatuar döngüyü kırmak için kritiktir.",
-    ],
-    gozenek: [
-      "Gözenek boyutu genetik olarak belirlenir; tamamen 'kapanmaz'. Ancak aşırı sebum, keratin birikmesi ve cilt elastikiyetinin azalması gözeneklerin görsel olarak genişlemesine neden olur.",
-      "AHA'larla kimyasal eksfoliasyon ve niasinamid ile sebo regülasyonu; gözenek içini temizleyerek ve çevre dokusunu sıkılaştırarak görünümü minimize eder.",
-      "Retinol uzun vadede hücre döngüsünü hızlandırarak gözenek tıkanıklıklarını önler.",
-    ],
-    nem: [
-      "Sağlıklı bir epidermal bariyer üç bileşen gerektirir: keratinosit proteinleri, ceramid başta olmak üzere lipidler ve doğal nemlendiriciler (NMF).",
-      "Bariyer hasarında transepidermal su kaybı (TEWL) artar; cildin nem tutma kapasitesi düşer. Ceramid + kolesterol + serbest yağ asidi kombinasyonu fizyolojik lipid oranını yeniden oluşturur.",
-      "Hyaluronik asit gibi humektanlar ise farklı moleküler ağırlıklarda epidermal ve dermal katmanı nemlendirir.",
-    ],
-    cizgi: [
-      "Kırışıklıklar; kollajen ve elastin liflerinin UV, oksidatif stres ve hücresel yaşlanmayla yıpranmasıyla gelişir. Dermal matriksin yeniden yapılanması yavaşlar.",
-      "Retinoidler (retinol → retinal → retinoik asit) RAR reseptörlerine bağlanarak kollajen sentezini artırır ve matriks metalloproteinaz (MMP) aktivitesini baskılar.",
-      "Peptidler fibroblastları sinyalizasyon yoluyla aktive eder; A vitamini türevleriyle sinerji yaratır.",
-    ],
-    hassas: [
-      "Hassas cilt; bozulmuş epidermal bariyer, artmış nörosensöriyal reaktivite ve düşük inflamasyon eşiğinin birleşimidir.",
-      "Fragman, alkol ve yüksek konsantrasyonlu aktifler bu mekanizmayı tetikler. Hypoallerjenik formülasyon; yalnızca güvenlik profili geniş değerlendirilmiş bileşenleri içerir.",
-      "Ceramid ve madecassoside gibi yatıştırıcı aktifler bariyer bütünlüğünü destekler ve kızarıklık görünümünü azaltır.",
-    ],
-  };
-  return map[slug] || ["Bu çözüm için bilimsel protokol içeriği hazırlanıyor."];
 }

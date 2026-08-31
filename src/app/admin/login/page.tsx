@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
 
       if (res.ok) {
         // Cookie tarayıcıya yazıldı — tam sayfa yüklemesiyle middleware cookie'yi okusun
-        window.location.href = "/admin/orders";
+        window.location.href = "/admin/products";
         return;
       }
 

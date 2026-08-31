@@ -1,13 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import AccountLayout from "@/components/AccountLayout";
 import { useAuth } from "@/context/AuthContext";
-import { products } from "@/lib/data";
+import type { Product } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import { Heart } from "lucide-react";
 
 export default function WishlistPage() {
   const { user } = useAuth();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((r) => r.json())
+      .then((b) => setProducts(b.products ?? []))
+      .catch(() => setProducts([]));
+  }, []);
 
   const wishlistSlugs = user?.wishlist || [];
   const wishlistProducts = products.filter((p) => wishlistSlugs.includes(p.slug));

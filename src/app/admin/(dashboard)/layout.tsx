@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ShoppingBag, Users, Settings, LogOut, LayoutDashboard } from "lucide-react";
+import { ShoppingBag, Users, Settings, LogOut, LayoutDashboard, Package, FileText } from "lucide-react";
 import type { ReactNode } from "react";
 
 const NAV_ITEMS = [
+  { href: "/admin/products", label: "Ürünler", icon: Package },
+  { href: "/admin/content", label: "Site İçeriği", icon: FileText },
   { href: "/admin/orders", label: "Siparişler", icon: ShoppingBag },
   { href: "/admin/customers", label: "Müşteriler", icon: Users },
   { href: "/admin/settings", label: "Ayarlar", icon: Settings },

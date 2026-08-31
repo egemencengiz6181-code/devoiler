@@ -1,28 +1,37 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { skinNeeds, products } from "@/lib/data";
+import { getProducts, getSiteContent } from "@/lib/cms";
 
-export const metadata = {
-  title: "Cilt Çözümleri — Devoiler",
-  description: "Cilt ihtiyacınıza göre formülasyon protokolü: leke, akne, gözenek, nem, kırışıklık, hassas cilt.",
-};
+export const revalidate = 60;
 
-export default function SolutionsPage() {
+export async function generateMetadata() {
+  const content = await getSiteContent();
+  return {
+    title: "Cilt Çözümleri — Devoiler",
+    description: content.solutionsPage.description,
+  };
+}
+
+export default async function SolutionsPage() {
+  const [products, content] = await Promise.all([getProducts(), getSiteContent()]);
+  const c = content.solutionsPage;
+  const skinNeeds = content.skinNeeds;
+
   return (
     <div className="bg-[#FAFAF8]">
       {/* HERO */}
       <section className="pt-48 pb-20 px-6 md:px-12 max-w-[1440px] mx-auto">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[#6B8F71] font-medium mb-8">
-          Cilt İhtiyacına Göre
+          {c.label}
         </p>
         <div className="grid lg:grid-cols-2 gap-16 items-end">
           <h1 className="text-[52px] md:text-[68px] font-light tracking-[-0.03em] leading-[0.95] text-[#1A1A1A]">
-            Probleminizi seçin.
+            {c.title1}
             <br />
-            <em className="not-italic text-[#6B8F71]">Çözümünüzü bulun.</em>
+            <em className="not-italic text-[#6B8F71]">{c.titleAccent}</em>
           </h1>
           <p className="text-[15px] leading-[1.9] text-[#4A4A4A] max-w-md">
-            Ürün isimleri değil cilt ihtiyaçları üzerinden düşünüyoruz. Her protokol, o ihtiyaç için bilimsel olarak desteklenen aktif bileşenleri sunar.
+            {c.description}
           </p>
         </div>
       </section>

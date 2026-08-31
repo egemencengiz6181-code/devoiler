@@ -1,29 +1,38 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { activeIngredients, products } from "@/lib/data";
+import { getProducts, getSiteContent } from "@/lib/cms";
 import ProductCard from "@/components/ProductCard";
 
-export const metadata = {
-  title: "Aktif İçerikler & Formülasyonlar — Devoiler",
-  description: "Retinol, Vitamin C, Niasinamid, Hyaluronik Asit ve daha fazlası. Aktif içerik seçiminizle doğru formülasyonu bulun.",
-};
+export const revalidate = 60;
 
-export default function IngredientsPage() {
+export async function generateMetadata() {
+  const content = await getSiteContent();
+  return {
+    title: "Aktif İçerikler & Formülasyonlar — Devoiler",
+    description: content.ingredientsPage.description,
+  };
+}
+
+export default async function IngredientsPage() {
+  const [products, content] = await Promise.all([getProducts(), getSiteContent()]);
+  const c = content.ingredientsPage;
+  const activeIngredients = content.activeIngredients;
+
   return (
     <div className="bg-[#FAFAF8]">
       {/* HERO */}
       <section className="pt-48 pb-24 px-6 md:px-12 max-w-[1440px] mx-auto">
         <p className="text-[10px] tracking-[0.4em] uppercase text-[#6B8F71] font-medium mb-8">
-          Aktif İçeriğe Göre
+          {c.label}
         </p>
         <div className="grid lg:grid-cols-2 gap-16 items-end">
           <h1 className="text-[52px] md:text-[68px] font-light tracking-[-0.03em] leading-[0.95] text-[#1A1A1A]">
-            İçeriği tanıyın.
+            {c.title1}
             <br />
-            <em className="not-italic text-[#6B8F71]">Bilinçli seçin.</em>
+            <em className="not-italic text-[#6B8F71]">{c.titleAccent}</em>
           </h1>
           <p className="text-[15px] leading-[1.9] text-[#4A4A4A] max-w-md">
-            Her aktif bileşen farklı bir mekanizma üzerinden çalışır. Hangi bileşenin ne yaptığını anlamak, doğru protokolü inşa etmenin temelidir.
+            {c.description}
           </p>
         </div>
       </section>

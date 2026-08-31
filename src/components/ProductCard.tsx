@@ -4,7 +4,7 @@ import { Product } from "@/lib/data";
 import { ArrowRight, Star } from "lucide-react";
 import WishlistButton from "@/components/WishlistButton";
 
-const reviews = [
+const fallbackReviews = [
   "\u201CODTÜ Kimya güvencesi: pH dengesi mükemmel, cildim sonunda aradığı dengeyi buldu.\u201D — Ece B.",
   "\u201CSonunda gerçekten işe yarayan bir C Vitamini. İlk haftadan cildimdeki aydınlanma fark edilir boyutta.\u201D — Burcu K.",
   "\u201CKimyager elinden çıktığı belli. Niasinamid konsantrasyonu tam kıvamında, sivilcelerim kontrol altında.\u201D — Selin G.",
@@ -13,6 +13,12 @@ const reviews = [
 ];
 
 export default function ProductCard({ product }: { product: Product }) {
+  // Ürünün kendi yorumları varsa onları göster (admin panelinden düzenlenebilir)
+  const reviews =
+    product.reviews && product.reviews.length > 0
+      ? product.reviews.map((r) => `\u201C${r.text}\u201D — ${r.author}`)
+      : fallbackReviews;
+
   return (
     <Link href={`/products/${product.slug}`} className="group block">
       <div className="relative overflow-hidden bg-[#F4F4F0] aspect-[3/4] mb-4 transition-all duration-700 group-hover:bg-[#EEEEE8]">

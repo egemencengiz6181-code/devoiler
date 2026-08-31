@@ -1,20 +1,24 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { activeIngredients, products } from "@/lib/data";
+import { getProducts, getSiteContent } from "@/lib/cms";
 import ProductCard from "@/components/ProductCard";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
-  return activeIngredients.map((i) => ({ slug: i.slug }));
+  const content = await getSiteContent();
+  return content.activeIngredients.map((i) => ({ slug: i.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const ing = activeIngredients.find((i) => i.slug === slug);
+  const content = await getSiteContent();
+  const ing = content.activeIngredients.find((i) => i.slug === slug);
   if (!ing) return {};
   return {
     title: `${ing.label} — Aktif İçerik Rehberi | Devoiler`,
@@ -24,6 +28,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function IngredientDetailPage({ params }: Props) {
   const { slug } = await params;
+  const [products, content] = await Promise.all([getProducts(), getSiteContent()]);
+  const activeIngredients = content.activeIngredients;
   const ing = activeIngredients.find((i) => i.slug === slug);
   if (!ing) notFound();
 

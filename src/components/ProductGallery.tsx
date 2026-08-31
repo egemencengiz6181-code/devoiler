@@ -20,15 +20,18 @@ export default function ProductGallery({
   activeConcentration,
   activeIngredient,
 }: Props) {
-  const allImages = [mainImage, ...detailImages];
+  const allImages = [mainImage, ...(detailImages ?? [])].filter(Boolean);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const current = allImages[selectedIndex] ?? allImages[0];
+
+  if (!current) return null;
 
   return (
     <div className="relative">
       {/* Main Image */}
       <div className="bg-[#F4F4F0] relative overflow-hidden" style={{ height: "auto", maxHeight: "80vh" }}>
         <Image
-          src={allImages[selectedIndex]}
+          src={current}
           alt={productName}
           width={800}
           height={800}
@@ -43,7 +46,7 @@ export default function ProductGallery({
       </div>
 
       {/* Thumbnail strip */}
-      <div className="flex gap-3 mt-3 overflow-x-auto pb-2">
+      <div className={`flex gap-3 mt-3 overflow-x-auto pb-2 ${allImages.length < 2 ? "hidden" : ""}`}>
         {allImages.map((img, i) => (
           <button
             key={i}
